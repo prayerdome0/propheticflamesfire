@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Healing Nations Church | Equipping People Through the Prophetic Voice</title>
+  <!-- Google Fonts + simple reset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcf5;
+      color: #1e2a2f;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .logo-font, .hero-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: #ffffffdd;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #e6ddcf;
+      padding: 16px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f4ede3;
+      padding: 4px;
+    }
+
+    .logo-text h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #9b5e2c;
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #5c4b34;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2d3e3f;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #b5723b;
+    }
+
+    /* buttons */
+    .btn-primary {
+      background: #c2813a;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .btn-primary:hover {
+      background: #a5682e;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 1.5px solid #c2813a;
+      color: #c2813a;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn-outline-light:hover {
+      background: #c2813a;
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(120deg, #faf3e8 0%, #f6ede2 100%);
+      padding: 60px 0 70px;
+      border-bottom: 1px solid #ecdccb;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-title {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #7c4a21;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+      font-size: 1.6rem;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      color: #997a54;
+      margin-bottom: 20px;
+      border-left: 4px solid #c2813a;
+      padding-left: 20px;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #3b4b44;
+      max-width: 550px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      flex: 0.9;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 25px 35px -15px rgba(0,0,0,0.15);
+      border: 4px solid white;
+      background: #f3e9de;
+      object-fit: cover;
+      width: 100%;
+      max-height: 380px;
+    }
+
+    /* Section general */
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid #efe3d6;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #5e3a1f;
+      margin-bottom: 16px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-sub {
+      color: #786e5c;
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+
+    /* About blurb & Prophet bio */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1.2;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      color: #2b3b36;
+    }
+
+    .prophet-card {
+      background: #ffffffdd;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+      border: 1px solid #f0e2d2;
+      flex: 0.9;
+    }
+
+    .prophet-img {
+      width: 100%;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      object-fit: cover;
+      max-height: 280px;
+      width: 100%;
+      background: #eedbcb;
+    }
+
+    .prophet-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #9b5e2c;
+    }
+
+    .small-badge {
+      background: #e9dbce;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* ministries cards */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .ministry-card {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 24px;
+      flex: 1 1 280px;
+      transition: all 0.2s ease;
+      border: 1px solid #eedfcb;
+      box-shadow: 0 8px 16px -12px rgba(0,0,0,0.05);
+    }
+
+    .ministry-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      color: #c2813a;
+    }
+
+    .ministry-card p {
+      color: #4d5d57;
+    }
+
+    /* service times & contact */
+    .service-times {
+      background: #f8f2ea;
+      border-radius: 28px;
+      padding: 32px;
+      margin: 24px 0 36px;
+    }
+
+    .service-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .service-block {
+      background: white;
+      border-radius: 20px;
+      padding: 18px 24px;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid #e7d9cc;
+    }
+
+    .service-block h4 {
+      font-weight: 700;
+      color: #9b5e2c;
+      margin-bottom: 6px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 30px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-details {
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 28px;
+      flex: 1;
+    }
+
+    .contact-details i {
+      font-weight: 600;
+      color: #b5723b;
+    }
+
+    .prayer-line {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #2a5c4b;
+      letter-spacing: 1px;
+    }
+
+    .map-placeholder {
+      background: #e4d9cd;
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      flex: 1;
+    }
+
+    footer {
+      background: #1e2a2a;
+      color: #e8dbcf;
+      padding: 36px 0;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .nav-container {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+      .hero-tagline {
+        font-size: 1.2rem;
+      }
+    }
+
+    .italic-prophetic {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dotted #dccdbd;
+      margin: 24px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <!-- church logo from provided image (logo) -->
+      <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Healing Nations Church Logo" onerror="this.src='https://placehold.co/80x80?text=HNC';this.style.background='#e9d9ca'">
+      <div class="logo-text">
+        <h3>Prophetic Flames of Fire Ministries</h3>
+        <p>Healing Nations Church</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#ministries">Ministries</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#services" class="btn-primary" style="background:#9b6e3e; color:white; padding:8px 20px;">Plan Visit</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero Section (includes vision statement) -->
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1 class="hero-title">PROPHETIC FLAMES OF FIRE MINISTRIES</h1>
+      <div class="hero-tagline">Where Broken Hearts Find Wholeness</div>
+      <p class="hero-desc"><strong>Vision:</strong> Equipping people through the prophetic voice — raising a generation that carries healing, deliverance, and the sound of heaven to the nations.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Plan Your Visit</a>
+        <a href="#contact" class="btn-outline-light">Prayer Line</a>
+      </div>
+      <p style="margin-top: 24px; font-size:0.85rem; background:#f8efdf; display:inline-block; padding:6px 16px; border-radius:40px;">📍 MUNGWI & KASAMA | Sundays 9:00 AM</p>
+    </div>
+    <div class="hero-image">
+      <!-- main church / prophet image (first provided image) -->
+      <img src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent ministering" onerror="this.src='https://placehold.co/500x350?text=Healing+Nations'">
+    </div>
+  </div>
+</section>
+
+<!-- About Section: mission, pastor, what you believe -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>Healing Nations Church</strong> exists to bring God’s healing power to individuals, families, and communities across Zambia and beyond. Through prayer, the Word, and compassionate service, we believe every nation can experience restoration.</p>
+        <p><strong>Our Mission:</strong> To release the prophetic voice, demonstrate the love of Christ, and see souls transformed by the power of the Holy Spirit. We are a people of worship, intercession, and radical faith.</p>
+        <p><strong>What We Believe:</strong> We believe in the Triune God — Father, Son, and Holy Spirit. The Bible is the infallible Word of God. Salvation is through Jesus Christ alone. We believe in the gifts of the Spirit, healing, prophecy, deliverance, and the soon return of our King. We stand on divine restoration for families and nations.</p>
+        <div class="small-badge">Prophetic · Healing · Apostolic Vision</div>
+      </div>
+      <div class="prophet-card">
+        <img class="prophet-img" src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" onerror="this.src='https://placehold.co/400x280?text=Prophet+CK'">
+        <div class="prophet-name">Prophet CK Innocent</div>
+        <p class="italic-prophetic">Called at childhood to minister healing, deliverance, and prophesy to the nations of the world. Founder & President of PROPHETIC FLAMES OF FIRE MINISTRIES A.K.A HEALING NATIONS CHURCH — based in Mungwi, Northern Province of Zambia.</p>
+        <p style="margin-top: 12px;">With a heart for the broken, Prophet CK Innocent carries a mantle for miracles, prophetic accuracy, and equipping believers to walk in supernatural power.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ministries/Events: healing services, youth, outreach -->
+<section id="ministries">
+  <div class="container">
+    <h2 class="section-title">Ministries & Events</h2>
+    <p class="section-sub">Divine encounters, youth revival, and community outreach — every gathering is an opportunity for wholeness.</p>
+    <div class="cards-grid">
+      <div class="ministry-card">
+        <h3>🕊️ Healing Services</h3>
+        <p>Every Wednesday at 2:00 PM, we host powerful healing and deliverance services. Prayer for the sick, prophetic declarations, and testimonies of God’s restoring power. Join us and experience supernatural touch.</p>
+        <p style="margin-top: 15px; font-weight:600;">📍 Mungwi & Kasama</p>
+      </div>
+      <div class="ministry-card">
+        <h3>🔥 Prophetic Service</h3>
+        <p>Friday Prophetic Service @ 2:00 PM. Impartation, prophetic direction, and worship. The voice of God is released to steer your week and align destinies. All are welcome.</p>
+        <div class="small-badge" style="background:#f7e2cf;">Prayer line active</div>
+      </div>
+      <div class="ministry-card">
+        <h3>🌱 Youth Arise</h3>
+        <p>Next-gen gathering every last Saturday of the month. Equipping young people with prophetic worship, mentorship, and leadership training. Empowering the next wave of revival in Northern Zambia.</p>
+      </div>
+      <div class="ministry-card">
+        <h3>🤝 Outreach Mission</h3>
+        <p>Feeding programs, medical evangelism, and school supply drives. We extend healing beyond the four walls, touching communities in Mungwi, Kasama, and surrounding regions. Partner with us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Times + Contact Section combined for clarity -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">Worship With Us</h2>
+    <div class="service-times">
+      <div class="service-row">
+        <div class="service-block"><h4>⛪ Sunday Service</h4><p>9:00 AM</p><small>Morning Glory Worship & Word</small></div>
+        <div class="service-block"><h4>🕯️ Wednesday Healing Service</h4><p>2:00 PM</p><small>Prayer & Anointing</small></div>
+        <div class="service-block"><h4>📯 Friday Prophetic Service</h4><p>2:00 PM</p><small>Prophetic Impartation</small></div>
+      </div>
+      <hr>
+      <div style="text-align:center; margin-top:10px;">
+        <span class="prayer-line">📞 Prayer Line: 0570026004</span>
+        <p style="margin-top: 10px;">Call for prayer, counseling, or to share testimonies. We stand with you in faith.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section: location, phone, full details (MUNGWI) -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-info">
+      <div class="contact-details">
+        <p><strong>📍 Headquarters & Main Location</strong><br>MUNGWI, Northern Province, Zambia<br>Prophetic Flames of Fire Ministries - Healing Nations Church</p>
+        <p><strong>📞 Church Phone / Prayer Line</strong><br><span style="font-size:1.5rem; font-weight:800;">0570026004</span><br>(Available for prayer, emergencies & service info)</p>
+        <p><strong>🕊️ Kasama Outreach Center</strong><br>Weekly services also held in Kasama, Northern Province. Join us for Sunday 9am and Wednesday Healing Services.</p>
+        <p><strong>✉️ Email / Social</strong><br>healingnations@propheticflames.com<br>Follow us: @HealingNationsZambia</p>
+        <div style="margin-top: 20px;">
+          <a href="tel:0570026004" class="btn-primary" style="background:#9b6a3c;">📲 Call Prayer Line</a>
+          <a href="#" class="btn-outline-light" style="margin-left:12px;">Plan Your Visit</a>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <h3 style="color:#4a3724;">📍 MUNGWI, Northern Province</h3>
+        <p>We are located along the main road opposite the community center, near Mungwi Boma. Follow signs: "Prophetic Flames of Fire Ministries".</p>
+        <div style="background:#cebcab; width:100%; height:130px; border-radius: 20px; display:flex; align-items:center; justify-content:center; margin-top:18px;">
+          <span style="color:#2a2b26;">🗺️ Google Maps available — ask for directions +260 570 026004</span>
+        </div>
+        <p style="margin-top: 20px;"><em>“Where Broken Hearts Find Wholeness — you belong here.”</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- additional doublecheck info: service times / phone displayed again as footnote -->
+<footer>
+  <div class="container">
+    <p>🔥 Healing Nations Church | Prophetic Flames of Fire Ministries 🔥</p>
+    <p>Mungwi & Kasama, Northern Province, Zambia | Sunday 9:00 AM | Wednesday 2PM | Friday 2PM Prophetic</p>
+    <p>📞 Prayer Line: 0570026004 | Equipping people through the prophetic voice</p>
+    <p style="margin-top: 20px; font-size:0.8rem;">© 2026 • Healing Nations Church • All worship and healing belong to the Lord</p>
+  </div>
+</footer>
+
+<!-- smooth scroll for anchor links -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  // make phone number clickable call to action
+  const prayerLink = document.querySelector('a[href="tel:0570026004"]');
+  if(prayerLink) {
+    prayerLink.addEventListener('click', (e) => {
+      // just allow default behavior for phone
+      console.log("Call prayer line");
+    });
+  }
+</script>
+</body>
+</html>
