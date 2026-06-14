@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #1e2a2f; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+    .animate-up { animation: fadeInUp 0.8s ease forwards; }
+    .animate-scale { animation: scaleIn 0.6s ease forwards; }
+    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-img { height: 54px; border-radius: 14px; padding: 5px; }
+    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; line-height: 1.3; }
+    .logo-text p { font-size: 0.65rem; color: #a07c56; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #c2813a; }
+    .nav-links .active { color: #c2813a; font-weight: 600; }
+    .nav-links .active::after { width: 100%; }
+    .btn-primary { background: #c2813a; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); }
+    .btn-donate { background: #2a7f6e; }
+    section { padding: 80px 0; }
+    .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; }
+    .section-sub { color: #8b765c; max-width: 700px; margin-bottom: 48px; font-size: 1.05rem; }
+    .cards-grid { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 20px; }
+    .ministry-card { background: white; border-radius: 28px; padding: 34px 28px; flex: 1 1 280px; transition: all 0.35s; border: 1px solid #eedfcb; box-shadow: 0 8px 20px -12px rgba(0,0,0,0.06); }
+    .ministry-card:hover { transform: translateY(-8px); border-color: #dcb885; }
+    .ministry-card h3 { font-size: 1.7rem; margin-bottom: 16px; color: #c2813a; }
+    .ministry-card p { color: #5a6e66; line-height: 1.6; }
+    .small-badge { background: #e9dbce; padding: 6px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; }
+    footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; margin-top: 20px; }
+    @media (max-width: 900px) { .container { padding: 0 20px; } .nav-container { flex-direction: column; } .section-title::after { left: 50%; transform: translateX(-50%); } .section-title { text-align: center; display: block; } .section-sub { text-align: center; margin-left: auto; margin-right: auto; } }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area"><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo"><div class="logo-text"><h3>PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h3><p>Healing Nations Church</p></div></div>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html" class="active">Ministries</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li><li><a href="donation.html" class="btn-primary btn-donate" style="background:#2a7f6e;">💖 Donate</a></li><li><a href="services.html" class="btn-primary" style="padding:8px 24px;">Plan Visit</a></li></ul>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <h2 class="section-title animate-up">Ministries & Events</h2>
+    <p class="section-sub animate-up">Divine encounters, youth revival, and community outreach — every gathering is an opportunity for wholeness.</p>
+    <div class="cards-grid">
+      <div class="ministry-card animate-scale"><h3>🕊️ Healing Services</h3><p>Every Wednesday at 2:00 PM, we host powerful healing and deliverance services. Prayer for the sick, prophetic declarations, and testimonies of God's restoring power.</p><p style="margin-top: 15px; font-weight:500;">📍 Mungwi & Kasama</p></div>
+      <div class="ministry-card animate-scale"><h3>🔥 Prophetic Service</h3><p>Friday Prophetic Service @ 2:00 PM. Impartation, prophetic direction, and worship. The voice of God is released to steer your week and align destinies.</p><div class="small-badge">Prayer line active</div></div>
+      <div class="ministry-card animate-scale"><h3>🌱 Youth Arise</h3><p>Next-gen gathering every last Saturday of the month. Equipping young people with prophetic worship, mentorship, and leadership training for revival in Northern Zambia.</p></div>
+      <div class="ministry-card animate-scale"><h3>🤝 Outreach Mission</h3><p>Feeding programs, medical evangelism, and school supply drives. Extending healing beyond the four walls, touching communities in Mungwi, Kasama, and surrounding regions.</p></div>
+      <div class="ministry-card animate-scale"><h3>🎶 Prophetic Worship Nights</h3><p>Quarterly nights of worship, prayer, and breakthrough. Come expecting a fresh touch from heaven.</p></div>
+      <div class="ministry-card animate-scale"><h3>📖 School of Prophetic</h3><p>Training believers to hear God's voice. Equipping through the prophetic voice — register now!</p></div>
+    </div>
+  </div>
+</section>
+<footer><div class="container"><p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p>📞 Prayer Line: 0570026004 | ✉️ healingnations@propheticflames.com</p><p>© 2026 • Equipping people through the prophetic voice</p></div></footer>
+</body>
+</html>

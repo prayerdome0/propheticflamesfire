@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #1e2a2f; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
+    .animate-left { animation: fadeInLeft 0.7s ease forwards; }
+    .animate-right { animation: fadeInRight 0.7s ease forwards; }
+    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .logo-img { height: 54px; border-radius: 14px; padding: 5px; }
+    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; line-height: 1.3; }
+    .logo-text p { font-size: 0.65rem; color: #a07c56; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #c2813a; }
+    .nav-links .active { color: #c2813a; font-weight: 600; }
+    .nav-links .active::after { width: 100%; }
+    .btn-primary { background: #c2813a; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); }
+    .btn-donate { background: #2a7f6e; }
+    .btn-whatsapp { background: #25D366; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-top: 10px; }
+    section { padding: 80px 0; }
+    .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; }
+    .contact-info { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 30px; }
+    .contact-details { background: white; border-radius: 32px; padding: 32px; flex: 1; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #ede0d0; }
+    .donation-card { background: linear-gradient(135deg, #eef7f4, #e0f0ea); border: 2px solid #2a7f6e; }
+    .donation-amounts { display: flex; flex-wrap: wrap; gap: 15px; margin: 25px 0; }
+    .amount { background: white; padding: 12px 20px; border-radius: 60px; font-weight: 700; color: #2a7f6e; border: 1px solid #2a7f6e; transition: 0.2s; cursor: pointer; }
+    .amount:hover { background: #2a7f6e; color: white; }
+    .map-placeholder { background: #e8dfd3; border-radius: 32px; padding: 32px; text-align: center; flex: 1; }
+    footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; margin-top: 20px; }
+    @media (max-width: 900px) { .container { padding: 0 20px; } .nav-container { flex-direction: column; } .section-title::after { left: 50%; transform: translateX(-50%); } .section-title { text-align: center; display: block; } }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area"><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo"><div class="logo-text"><h3>PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h3><p>Healing Nations Church</p></div></div>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html" class="active">Contact</a></li><li><a href="donation.html" class="btn-primary btn-donate" style="background:#2a7f6e;">💖 Donate</a></li><li><a href="services.html" class="btn-primary" style="padding:8px 24px;">Plan Visit</a></li></ul>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <h2 class="section-title animate-left">Get In Touch & Give</h2>
+    <div class="contact-info">
+      <div class="contact-details animate-left">
+        <p><strong>📍 Headquarters & Main Location</strong><br>MUNGWI, Northern Province, Zambia<br>Prophetic Flames of Fire Ministries - Healing Nations Church</p>
+        <p><strong>📞 Church Phone / Prayer Line</strong><br><span style="font-size:1.6rem; font-weight:800; color:#8b5a2b;">0570026004</span><br>(Available for prayer, counseling & service info)</p>
+        <p><strong>🕊️ Kasama Outreach Center</strong><br>Weekly services also held in Kasama, Northern Province.</p>
+        <p><strong>✉️ Email</strong><br>healingnations@propheticflames.com</p>
+        <div style="margin-top: 26px;">
+          <a href="tel:0570026004" class="btn-primary" style="background:#9b6a3c;">📲 Call Prayer Line</a>
+          <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" class="btn-whatsapp">📱 WhatsApp Channel</a>
+        </div>
+      </div>
+      <div class="map-placeholder animate-right">
+        <h3 style="color:#4a3724; margin-bottom: 14px;">📍 MUNGWI, Northern Province</h3>
+        <p>Located along the main road opposite the community center, near Mungwi Boma.</p>
+        <div style="background:#d6c8b8; width:100%; height:120px; border-radius: 24px; display:flex; align-items:center; justify-content:center; margin-top:22px;">
+          <span style="color:#3e3324;">🗺️ Directions: +260 570 026004</span>
+        </div>
+        <p style="margin-top: 22px;"><em>“Where Broken Hearts Find Wholeness — you belong here.”</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><div class="container"><p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p>📞 Prayer Line: 0570026004 | ✉️ healingnations@propheticflames.com</p><p>© 2026 • Equipping people through the prophetic voice</p></div></footer>
+</body>
+</html>

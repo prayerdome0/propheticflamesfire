@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #1e2a2f; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+    .animate-scale { animation: scaleIn 0.6s ease forwards; }
+    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .logo-img { height: 54px; border-radius: 14px; padding: 5px; }
+    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; line-height: 1.3; }
+    .logo-text p { font-size: 0.65rem; color: #a07c56; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #c2813a; }
+    .nav-links .active { color: #c2813a; font-weight: 600; }
+    .btn-primary { background: #c2813a; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); }
+    .btn-donate-nav { background: #2a7f6e; }
+    section { padding: 80px 0; text-align: center; }
+    .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: #c2813a; }
+    .donation-card { max-width: 700px; margin: 40px auto; background: linear-gradient(145deg, #ffffff, #fef7ef); border-radius: 48px; padding: 48px; box-shadow: 0 30px 50px -20px rgba(0,0,0,0.2); border: 1px solid rgba(42,127,110,0.3); }
+    .donation-number { font-size: 2.5rem; font-weight: 800; color: #2a7f6e; background: #e0f0ea; display: inline-block; padding: 12px 32px; border-radius: 80px; letter-spacing: 2px; margin: 25px 0; }
+    .mobile-money { font-size: 1.1rem; color: #5a6e66; margin: 20px 0; }
+    .btn-copy { background: #2a7f6e; color: white; border: none; padding: 12px 28px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+    .btn-copy:hover { background: #1e6254; transform: translateY(-2px); }
+    footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; margin-top: 20px; }
+    @media (max-width: 900px) { .container { padding: 0 20px; } .nav-container { flex-direction: column; } .donation-number { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area"><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo"><div class="logo-text"><h3>PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h3><p>Healing Nations Church</p></div></div>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li><li><a href="donation.html" class="active" style="background:#2a7f6e; color:white; padding:8px 24px; border-radius:50px;">💖 Donate</a></li><li><a href="services.html" class="btn-primary" style="padding:8px 24px;">Plan Visit</a></li></ul>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <h2 class="section-title animate-scale">Support The Vision</h2>
+    <div class="donation-card animate-scale">
+      <p style="font-size: 1.2rem; color: #5e3a1f;">Your generosity fuels healing, prophetic ministry, and outreach across Zambia.</p>
+      <div class="donation-number">+260 776 160997</div>
+      <div class="mobile-money">📱 Airtel Money · MTN Mobile Money · Zamtel</div>
+      <p><strong>Prophet CK Innocent Ministries</strong><br>Prophetic Flames of Fire Ministries - Healing Nations Church</p>
+      <button class="btn-copy" onclick="copyNumber()">📋 Copy Number</button>
+      <p style="margin-top: 30px; font-size: 0.9rem;">"Give, and it will be given to you... God loves a cheerful giver." — Luke 6:38</p>
+      <div style="margin-top: 25px;">
+        <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" class="btn-primary" style="background:#25D366;">📱 Join WhatsApp Channel</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><div class="container"><p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p>📞 Prayer Line: 0570026004 | 💖 Donations: +260 776 160997</p><p>© 2026 • Equipping people through the prophetic voice</p></div></footer>
+<script>function copyNumber(){ navigator.clipboard.writeText("+260776160997"); alert("Donation number copied: +260 776 160997. God bless you!"); }</script>
+</body>
+</html>
