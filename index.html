@@ -16,7 +16,6 @@
     h1, h2, h3, .logo-font, .hero-title, .section-title { font-family: 'Playfair Display', serif; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
     
-    /* Animations */
     @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
     @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
@@ -31,7 +30,6 @@
     .fade-up-delay-4 { animation-delay: 0.4s; opacity: 0; }
     .fade-up-delay-5 { animation-delay: 0.5s; opacity: 0; }
     
-    /* Navbar */
     .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
     .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
@@ -55,7 +53,6 @@
     .btn-donate { background: #2a7f6e; box-shadow: 0 4px 12px rgba(42, 127, 110, 0.3); }
     .btn-donate:hover { background: #1e6254; }
     
-    /* Hero */
     .hero { background: linear-gradient(135deg, #faf1e6 0%, #f5e8db 100%); padding: 70px 0 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 70%; height: 150%; background: radial-gradient(circle, rgba(194,129,58,0.05) 0%, transparent 70%); pointer-events: none; }
     .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; justify-content: space-between; position: relative; z-index: 2; }
@@ -70,7 +67,6 @@
     .hero-image img { max-width: 100%; border-radius: 32px; box-shadow: 0 30px 40px -20px rgba(0,0,0,0.25); border: 5px solid white; object-fit: cover; width: 100%; max-height: 420px; transition: transform 0.4s ease; }
     .hero-image img:hover { transform: scale(1.01); }
     
-    /* Prophet Card Branded */
     .prophet-card-branded { background: linear-gradient(145deg, #ffffff 0%, #fef7ef 100%); border-radius: 40px; padding: 32px; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.2); border: 1px solid rgba(194,129,58,0.2); position: relative; overflow: hidden; transition: all 0.4s ease; }
     .prophet-card-branded:hover { transform: translateY(-8px); box-shadow: 0 40px 55px -20px rgba(0,0,0,0.25); }
     .prophet-card-branded::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #c2813a, #e6b17e, #c2813a); }
@@ -79,13 +75,11 @@
     .prophet-title { font-size: 0.9rem; font-weight: 600; color: #c2813a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
     .prophet-quote { font-style: italic; border-left: 3px solid #c2813a; padding-left: 18px; margin: 18px 0; color: #5a4a38; }
     
-    /* Sections */
     section { padding: 80px 0; border-bottom: 1px solid #efe2d4; }
     .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; }
     .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; border-radius: 3px; }
     .section-sub { color: #8b765c; max-width: 700px; margin-bottom: 48px; font-size: 1.05rem; line-height: 1.6; }
     
-    /* Cards */
     .cards-grid { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 20px; }
     .ministry-card { background: white; border-radius: 28px; padding: 34px 28px; flex: 1 1 280px; transition: all 0.35s ease; border: 1px solid #eedfcb; box-shadow: 0 8px 20px -12px rgba(0,0,0,0.06); }
     .ministry-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); border-color: #dcb885; }
@@ -93,20 +87,13 @@
     .ministry-card p { color: #5a6e66; line-height: 1.6; }
     .small-badge { background: #e9dbce; padding: 6px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; }
     
-    /* Service Times */
-    .service-times { background: linear-gradient(135deg, #fdf7f0, #faf2e9); border-radius: 32px; padding: 42px; margin: 16px 0 20px; }
-    .service-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
-    .service-block { background: white; border-radius: 24px; padding: 24px 28px; flex: 1; min-width: 190px; text-align: center; transition: all 0.25s ease; border: 1px solid #e9dacb; }
-    .service-block:hover { transform: scale(1.02); border-color: #c2813a; }
-    .service-block h4 { font-size: 1.3rem; font-weight: 700; color: #8b5a2b; margin-bottom: 8px; }
-    .prayer-line { font-size: 1.8rem; font-weight: 800; color: #2a5c4b; letter-spacing: 1px; }
-    hr { border: none; border-top: 2px dotted #decbae; margin: 28px 0; }
+    .post-list { display: flex; flex-direction: column; gap: 30px; margin-top: 30px; }
+    .post-item { background: white; border-radius: 28px; padding: 28px 32px; border-left: 6px solid #c2813a; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: 0.3s; }
+    .post-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+    .post-title { font-size: 1.6rem; font-weight: 700; color: #5e3a1f; margin-bottom: 8px; }
+    .post-date { font-size: 0.85rem; color: #a07c56; margin-bottom: 12px; }
+    .post-content { color: #3a4e47; line-height: 1.7; }
     
-    /* Contact & WhatsApp */
-    .contact-info { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 30px; }
-    .contact-details { background: white; border-radius: 32px; padding: 32px; flex: 1; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #ede0d0; }
-    .donation-card { background: linear-gradient(135deg, #eef7f4, #e0f0ea); border: 1px solid #2a7f6e; }
-    .map-placeholder { background: #e8dfd3; border-radius: 32px; padding: 32px; text-align: center; flex: 1; }
     footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; }
     
     @media (max-width: 900px) { .hero-title { font-size: 2.4rem; } .hero-tagline { font-size: 1.2rem; } .section-title { font-size: 2rem; } .container { padding: 0 20px; } .nav-container { flex-direction: column; } .nav-links { justify-content: center; gap: 20px; } .hero-grid { flex-direction: column; text-align: center; } .hero-content { text-align: center; } .hero-tagline { border-left: none; padding-left: 0; border-top: 3px solid #c2813a; padding-top: 12px; } .hero-actions { justify-content: center; } .section-title::after { left: 50%; transform: translateX(-50%); width: 70px; } }
@@ -129,13 +116,13 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="donation.html" class="btn-primary btn-donate" style="background:#2a7f6e;">💖 Donate</a></li>
+      <li><a href="admin.html" class="btn-outline" style="border-color:#6b4c3c; color:#6b4c3c;">🔐 Admin</a></li>
       <li><a href="services.html" class="btn-primary" style="background:#9b6e3e; padding:8px 24px;">Plan Visit</a></li>
     </ul>
   </div>
 </header>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
+<section class="hero">
   <div class="container hero-grid">
     <div class="hero-content">
       <h1 class="hero-title animate-left">PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h1>
@@ -155,7 +142,6 @@
   </div>
 </section>
 
-<!-- Prophet CK Innocent - Branded Section -->
 <section>
   <div class="container">
     <h2 class="section-title animate-up">The Prophet & Founder</h2>
@@ -177,7 +163,6 @@
   </div>
 </section>
 
-<!-- Quick Ministries Preview -->
 <section>
   <div class="container">
     <h2 class="section-title animate-up">Powerful Ministries</h2>
@@ -191,6 +176,16 @@
   </div>
 </section>
 
+<section id="updates">
+  <div class="container">
+    <h2 class="section-title animate-up">Ministry Updates</h2>
+    <p class="section-sub animate-up">Stay connected with the latest news, prophetic words, and announcements from Prophet CK Innocent.</p>
+    <div id="postContainer" class="post-list">
+      <p style="color:#8b765c; font-style:italic;">Loading updates...</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="container">
     <p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p>
@@ -200,5 +195,35 @@
     <p style="margin-top: 24px; font-size:0.8rem;">© 2026 • Equipping people through the prophetic voice</p>
   </div>
 </footer>
+
+<script>
+  const STORAGE_KEY = 'pffm_posts';
+  function loadPosts() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  }
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  function renderPublicPosts() {
+    const container = document.getElementById('postContainer');
+    const posts = loadPosts();
+    if (posts.length === 0) {
+      container.innerHTML = `<p style="color:#8b765c; font-style:italic;">No updates yet. Stay tuned for news from the ministry.</p>`;
+      return;
+    }
+    const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    container.innerHTML = sorted.map(post => `
+      <div class="post-item">
+        <div class="post-title">${escapeHtml(post.title)}</div>
+        <div class="post-date">📅 ${new Date(post.date).toLocaleDateString('en-ZM', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+        <div class="post-content">${escapeHtml(post.content).replace(/\n/g, '<br>')}</div>
+      </div>
+    `).join('');
+  }
+  renderPublicPosts();
+</script>
 </body>
 </html>

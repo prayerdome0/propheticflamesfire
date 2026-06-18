@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Prophetic Flames of Fire Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #1e2a2f; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+    .animate-up { animation: fadeInUp 0.6s ease forwards; }
+    
+    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-img { height: 54px; border-radius: 14px; background: #f5ede3; padding: 5px; }
+    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; line-height: 1.3; }
+    .logo-text p { font-size: 0.65rem; color: #a07c56; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #c2813a; }
+    .nav-links .active { color: #c2813a; font-weight: 600; }
+    .btn-primary { background: #c2813a; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); }
+    .btn-danger { background: #b33c3c; }
+    .btn-danger:hover { background: #8a2e2e; }
+    .btn-outline { background: transparent; border: 1.5px solid #c2813a; color: #c2813a; padding: 8px 24px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+    .btn-outline:hover { background: #c2813a; color: white; }
+    
+    section { padding: 40px 0; }
+    .section-title { font-size: 2rem; font-weight: 700; color: #5e3a1f; margin-bottom: 30px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; }
+    
+    .admin-stats { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 40px; }
+    .stat-card { background: white; border-radius: 24px; padding: 24px 32px; flex: 1; min-width: 180px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #ede0d0; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #c2813a; }
+    .stat-label { color: #8b765c; font-size: 0.9rem; }
+    
+    .admin-form { background: white; border-radius: 32px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #ede0d0; margin-bottom: 40px; }
+    .admin-form input, .admin-form textarea { width: 100%; padding: 14px 18px; border-radius: 20px; border: 1px solid #dccdbd; font-family: 'Inter', sans-serif; margin-bottom: 16px; font-size: 1rem; }
+    .admin-form textarea { min-height: 120px; resize: vertical; }
+    .admin-form .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .admin-form .form-row input { flex: 1; }
+    
+    .post-list-admin { display: flex; flex-direction: column; gap: 16px; }
+    .post-item-admin { background: white; border-radius: 20px; padding: 20px 24px; border-left: 4px solid #c2813a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .post-item-admin .post-info { flex: 1; }
+    .post-item-admin .post-info strong { font-size: 1.1rem; color: #5e3a1f; }
+    .post-item-admin .post-info span { font-size: 0.8rem; color: #8b765c; margin-left: 12px; }
+    .post-actions { display: flex; gap: 8px; }
+    .post-actions button { border: none; padding: 6px 16px; border-radius: 40px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-edit { background: #e9dbce; }
+    .btn-edit:hover { background: #c2813a; color: white; }
+    .btn-delete { background: #f5e0e0; color: #b33c3c; }
+    .btn-delete:hover { background: #b33c3c; color: white; }
+    
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(6px); z-index: 2000; align-items: center; justify-content: center; }
+    .modal.show { display: flex; }
+    .modal-content { background: white; border-radius: 40px; padding: 40px; max-width: 420px; width: 90%; box-shadow: 0 40px 60px -20px rgba(0,0,0,0.3); }
+    .modal-content h2 { margin-bottom: 20px; color: #5e3a1f; }
+    .modal-content input { width: 100%; padding: 14px 18px; border-radius: 20px; border: 1px solid #dccdbd; margin-bottom: 16px; font-size: 1rem; }
+    .modal-close { float: right; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #8b765c; }
+    
+    .toast { position: fixed; bottom: 30px; right: 30px; background: #2a7f6e; color: white; padding: 16px 28px; border-radius: 60px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); display: none; z-index: 3000; }
+    .toast.show { display: block; animation: fadeInUp 0.4s ease; }
+    
+    footer { background: #1e2a2a; color: #e0cfbe; padding: 30px 0; text-align: center; margin-top: 40px; }
+    @media (max-width: 900px) { .container { padding: 0 20px; } .nav-container { flex-direction: column; } .nav-links { justify-content: center; } .section-title::after { left: 50%; transform: translateX(-50%); } .section-title { text-align: center; display: block; } }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo">
+      <div class="logo-text">
+        <h3>PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h3>
+        <p>Admin Dashboard</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin.html" class="active">Dashboard</a></li>
+      <li><a href="#" id="logoutBtn" style="color:#b33c3c;">🚪 Logout</a></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2 class="section-title animate-up">📊 Admin Dashboard</h2>
+    
+    <div class="admin-stats animate-up">
+      <div class="stat-card"><div class="stat-number" id="totalPosts">0</div><div class="stat-label">Total Posts</div></div>
+      <div class="stat-card"><div class="stat-number" id="recentPosts">0</div><div class="stat-label">Recent (30 days)</div></div>
+      <div class="stat-card"><div class="stat-number" id="totalViews">---</div><div class="stat-label">Coming Soon</div></div>
+    </div>
+    
+    <div class="admin-form animate-up">
+      <h3 style="margin-bottom: 20px; color: #5e3a1f;">✏️ Create / Edit Post</h3>
+      <form id="postForm">
+        <input type="hidden" id="editPostId" value="">
+        <div class="form-row">
+          <input type="text" id="postTitle" placeholder="Post Title" required>
+        </div>
+        <textarea id="postContent" placeholder="Write your post content here..." required></textarea>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button type="submit" class="btn-primary" id="submitPostBtn">📝 Publish Post</button>
+          <button type="button" id="cancelEditBtn" style="display:none; background:#8b765c; color:white; border:none; padding:10px 24px; border-radius:50px; font-weight:600; cursor:pointer;">Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+    
+    <h3 style="margin: 30px 0 20px; color: #5e3a1f;">📋 All Posts</h3>
+    <div id="adminPostList" class="post-list-admin">
+      <p style="color:#8b765c;">Loading posts...</p>
+    </div>
+  </div>
+</section>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModalBtn">&times;</button>
+    <h2>🔐 Admin Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" value="admin@login" required>
+      <input type="password" id="loginPassword" placeholder="Password" value="Qwerty" required>
+      <button type="submit" class="btn-primary" style="width:100%;">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast">✅ Action completed!</div>
+
+<footer>
+  <div class="container">
+    <p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | Admin Panel</p>
+    <p style="font-size:0.8rem; margin-top:8px;">© 2026 • Equipping people through the prophetic voice</p>
+  </div>
+</footer>
+
+<script>
+  const STORAGE_KEY = 'pffm_posts';
+  const ADMIN_CREDENTIALS = { email: 'admin@login', password: 'Qwerty' };
+  
+  function loadPosts() { const stored = localStorage.getItem(STORAGE_KEY); return stored ? JSON.parse(stored) : []; }
+  function savePosts(posts) { localStorage.setItem(STORAGE_KEY, JSON.stringify(posts)); }
+  function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+  function showToast(msg) { const toast = document.getElementById('toast'); toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+  
+  function renderAdminPosts() {
+    const container = document.getElementById('adminPostList');
+    const posts = loadPosts();
+    document.getElementById('totalPosts').textContent = posts.length;
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const recent = posts.filter(p => new Date(p.date) >= thirtyDaysAgo);
+    document.getElementById('recentPosts').textContent = recent.length;
+    
+    if (posts.length === 0) {
+      container.innerHTML = `<p style="color:#8b765c;">No posts yet. Create your first update above.</p>`;
+      return;
+    }
+    const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    container.innerHTML = sorted.map(post => `
+      <div class="post-item-admin">
+        <div class="post-info">
+          <strong>${escapeHtml(post.title)}</strong>
+          <span>📅 ${new Date(post.date).toLocaleDateString('en-ZM', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+          <p style="font-size:0.9rem; color:#5a6e66; margin-top:4px;">${escapeHtml(post.content).substring(0, 120)}${post.content.length > 120 ? '...' : ''}</p>
+        </div>
+        <div class="post-actions">
+          <button class="btn-edit" data-id="${post.id}">✏️ Edit</button>
+          <button class="btn-delete" data-id="${post.id}">🗑️ Delete</button>
+        </div>
+      </div>
+    `).join('');
+    
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', () => editPost(btn.dataset.id));
+    });
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => { if (confirm('Delete this post?')) deletePost(btn.dataset.id); });
+    });
+  }
+  
+  function handlePostSubmit(e) {
+    e.preventDefault();
+    const title = document.getElementById('postTitle').value.trim();
+    const content = document.getElementById('postContent').value.trim();
+    if (!title || !content) return alert('Please fill in both title and content.');
+    const editId = document.getElementById('editPostId').value;
+    let posts = loadPosts();
+    if (editId) {
+      const index = posts.findIndex(p => p.id === editId);
+      if (index !== -1) posts[index] = { ...posts[index], title, content, date: new Date().toISOString() };
+      document.getElementById('editPostId').value = '';
+      document.getElementById('submitPostBtn').textContent = '📝 Publish Post';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+      showToast('✅ Post updated successfully!');
+    } else {
+      const newPost = { id: Date.now().toString(36) + Math.random().toString(36).substr(2, 4), title, content, date: new Date().toISOString() };
+      posts.push(newPost);
+      showToast('✅ New post published!');
+    }
+    savePosts(posts);
+    renderAdminPosts();
+    document.getElementById('postForm').reset();
+  }
+  
+  function editPost(id) {
+    const posts = loadPosts();
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+    document.getElementById('editPostId').value = post.id;
+    document.getElementById('postTitle').value = post.title;
+    document.getElementById('postContent').value = post.content;
+    document.getElementById('submitPostBtn').textContent = '🔄 Update Post';
+    document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  function deletePost(id) {
+    let posts = loadPosts();
+    posts = posts.filter(p => p.id !== id);
+    savePosts(posts);
+    renderAdminPosts();
+    showToast('🗑️ Post deleted.');
+  }
+  
+  document.getElementById('cancelEditBtn').addEventListener('click', () => {
+    document.getElementById('editPostId').value = '';
+    document.getElementById('submitPostBtn').textContent = '📝 Publish Post';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+    document.getElementById('postForm').reset();
+  });
+  
+  document.getElementById('postForm').addEventListener('submit', handlePostSubmit);
+  
+  // Login Logic
+  function checkLogin() {
+    const session = sessionStorage.getItem('adminLoggedIn');
+    if (session === 'true') { renderAdminPosts(); return true; }
+    document.getElementById('loginModal').classList.add('show');
+    return false;
+  }
+  
+  function login(email, password) {
+    if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
+      sessionStorage.setItem('adminLoggedIn', 'true');
+      document.getElementById('loginModal').classList.remove('show');
+      renderAdminPosts();
+      showToast('✅ Welcome Admin!');
+      return true;
+    } else {
+      alert('❌ Invalid credentials. Use admin@login / Qwerty');
+      return false;
+    }
+  }
+  
+  function logout() {
+    sessionStorage.removeItem('adminLoggedIn');
+    showToast('👋 Logged out');
+    setTimeout(() => location.reload(), 500);
+  }
+  
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
+  });
+  
+  document.getElementById('closeModalBtn').addEventListener('click', () => {
+    document.getElementById('loginModal').classList.remove('show');
+  });
+  
+  document.getElementById('logoutBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    logout();
+  });
+  
+  // Initial check
+  checkLogin();
+</script>
+</body>
+</html>
