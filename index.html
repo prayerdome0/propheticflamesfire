@@ -1,229 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prophetic Flames of Fire Ministries | Healing Nations Church</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background-color: #fefaf5; color: #1e2a2f; line-height: 1.5; overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', 'Playfair Display', serif; background: #fefaf5; color: #1e2a2f; line-height: 1.6; overflow-x: hidden; }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #f0e6dc; }
     ::-webkit-scrollbar-thumb { background: #c2813a; border-radius: 10px; }
     h1, h2, h3, .logo-font, .hero-title, .section-title { font-family: 'Playfair Display', serif; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-40px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(40px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+    @keyframes rotateLogo { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(360deg) scale(1); } }
+    @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(194,129,58,0.2); } 50% { box-shadow: 0 0 50px rgba(194,129,58,0.4); } }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes tickerScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
     
-    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
-    @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
-    .animate-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
-    .animate-left { animation: fadeInLeft 0.7s ease forwards; }
-    .animate-right { animation: fadeInRight 0.7s ease forwards; }
-    .animate-scale { animation: scaleIn 0.6s ease forwards; }
+    .animate-up { animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-left { animation: fadeInLeft 0.8s ease forwards; }
+    .animate-right { animation: fadeInRight 0.8s ease forwards; }
+    .animate-scale { animation: scaleIn 0.7s ease forwards; }
     .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
     .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
     .fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
     .fade-up-delay-4 { animation-delay: 0.4s; opacity: 0; }
     .fade-up-delay-5 { animation-delay: 0.5s; opacity: 0; }
-    
-    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .logo-area { display: flex; align-items: center; gap: 12px; }
-    .logo-img { height: 54px; width: auto; object-fit: contain; border-radius: 14px; background: #f5ede3; padding: 5px; transition: transform 0.3s ease; }
-    .logo-img:hover { transform: scale(1.02); }
-    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; letter-spacing: -0.2px; line-height: 1.3; }
-    .logo-text p { font-size: 0.65rem; font-weight: 500; color: #a07c56; letter-spacing: 0.3px; }
-    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: all 0.25s ease; font-size: 0.95rem; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s ease; }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a:hover { color: #c2813a; }
-    .nav-links .active { color: #c2813a; font-weight: 600; }
-    .nav-links .active::after { width: 100%; }
-    .btn-primary { background: #c2813a; border: none; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none; box-shadow: 0 4px 12px rgba(194, 129, 58, 0.2); }
-    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(194, 129, 58, 0.3); }
-    .btn-outline { background: transparent; border: 1.5px solid #c2813a; color: #c2813a; padding: 8px 24px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-outline:hover { background: #c2813a; color: white; transform: translateY(-2px); }
-    .btn-whatsapp { background: #25D366; border: none; color: white; padding: 10px 24px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-    .btn-whatsapp:hover { background: #1da85c; transform: translateY(-2px); }
-    .btn-donate { background: #2a7f6e; box-shadow: 0 4px 12px rgba(42, 127, 110, 0.3); }
-    .btn-donate:hover { background: #1e6254; }
-    
-    .hero { background: linear-gradient(135deg, #faf1e6 0%, #f5e8db 100%); padding: 70px 0 80px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 70%; height: 150%; background: radial-gradient(circle, rgba(194,129,58,0.05) 0%, transparent 70%); pointer-events: none; }
-    .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; justify-content: space-between; position: relative; z-index: 2; }
+    .fade-up-delay-6 { animation-delay: 0.6s; opacity: 0; }
+
+    /* ── Navbar ── */
+    .navbar { background: rgba(255, 252, 247, 0.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid rgba(194,129,58,0.15); padding: 10px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .logo-img { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; padding: 4px; background: linear-gradient(135deg, #c2813a, #f5d6a8); animation: rotateLogo 20s linear infinite, glowPulse 3s ease-in-out infinite; box-shadow: 0 0 30px rgba(194,129,58,0.15); border: 3px solid #c2813a; }
+    .logo-text h3 { font-size: 1.3rem; font-weight: 700; color: #6b3f1c; line-height: 1.2; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+    .logo-text h3 span { color: #c2813a; }
+    .logo-text p { font-size: 0.7rem; color: #a07c56; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.3s; font-size: 0.95rem; position: relative; font-family: 'Inter', sans-serif; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #c2813a, #f5d6a8); transition: width 0.3s; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: #c2813a; }
+    .btn-primary { background: linear-gradient(135deg, #c2813a, #a5682e); border: none; color: #fff; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 4px 15px rgba(194,129,58,0.3); font-family: 'Inter', sans-serif; }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(194,129,58,0.4); }
+    .btn-donate { background: linear-gradient(135deg, #2a7f6e, #1e6254); box-shadow: 0 4px 15px rgba(42,127,110,0.3); }
+    .btn-donate:hover { box-shadow: 0 8px 25px rgba(42,127,110,0.4); }
+    .btn-outline { background: transparent; border: 2px solid #c2813a; color: #c2813a; padding: 8px 22px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .btn-outline:hover { background: #c2813a; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(194,129,58,0.3); }
+    .btn-whatsapp { background: #25D366; border: none; color: #fff; padding: 8px 22px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .btn-whatsapp:hover { background: #1da85c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+
+    /* ── Ticker ── */
+    .ticker-wrap { background: linear-gradient(90deg, #1e2a2a, #2a3a3a); color: #f0e6dc; padding: 8px 0; overflow: hidden; position: relative; border-top: 2px solid #c2813a; border-bottom: 2px solid #c2813a; }
+    .ticker-content { display: flex; white-space: nowrap; animation: tickerScroll 35s linear infinite; }
+    .ticker-item { padding: 0 50px; font-size: 0.9rem; font-weight: 400; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
+    .ticker-item strong { color: #f5d6a8; }
+
+    /* ── Hero ── */
+    .hero { background: linear-gradient(135deg, #faf1e6 0%, #f5e8db 50%, #f0e0d0 100%); padding: 70px 0 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 70%; height: 150%; background: radial-gradient(circle, rgba(194,129,58,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero::after { content: '✦'; position: absolute; bottom: 20px; right: 40px; font-size: 12rem; color: rgba(194,129,58,0.05); pointer-events: none; }
+    .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; position: relative; z-index: 2; }
     .hero-content { flex: 1.2; }
-    .hero-title { font-size: 3.2rem; font-weight: 800; color: #6b3f1c; line-height: 1.2; margin-bottom: 16px; }
-    .hero-subtitle { font-size: 1.3rem; font-weight: 500; color: #9b6a3a; margin-bottom: 20px; letter-spacing: 1px; }
-    .hero-tagline { font-size: 1.5rem; font-style: italic; font-family: 'Playfair Display', serif; color: #b8864b; margin-bottom: 24px; border-left: 4px solid #c2813a; padding-left: 24px; }
-    .hero-desc { font-size: 1rem; color: #4a5c55; max-width: 550px; margin-bottom: 32px; line-height: 1.7; }
-    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 28px; }
-    .hero-location-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff5ea; padding: 8px 20px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: #6b4c2c; }
+    .hero-title { font-size: 3.8rem; font-weight: 800; color: #6b3f1c; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
+    .hero-title span { color: #c2813a; }
+    .hero-subtitle { font-size: 1.4rem; font-weight: 500; color: #9b6a3a; margin-bottom: 16px; letter-spacing: 3px; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+    .hero-tagline { font-size: 1.6rem; font-style: italic; font-family: 'Playfair Display', serif; color: #b8864b; margin-bottom: 20px; border-left: 4px solid #c2813a; padding-left: 24px; font-weight: 500; }
+    .hero-desc { font-size: 1.05rem; color: #4a5c55; max-width: 520px; margin-bottom: 30px; line-height: 1.8; font-family: 'Inter', sans-serif; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-location-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: #6b4c2c; border: 1px solid rgba(194,129,58,0.2); font-family: 'Inter', sans-serif; }
     .hero-image { flex: 0.9; text-align: center; }
-    .hero-image img { max-width: 100%; border-radius: 32px; box-shadow: 0 30px 40px -20px rgba(0,0,0,0.25); border: 5px solid white; object-fit: cover; width: 100%; max-height: 420px; transition: transform 0.4s ease; }
-    .hero-image img:hover { transform: scale(1.01); }
-    
-    .prophet-card-branded { background: linear-gradient(145deg, #ffffff 0%, #fef7ef 100%); border-radius: 40px; padding: 32px; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.2); border: 1px solid rgba(194,129,58,0.2); position: relative; overflow: hidden; transition: all 0.4s ease; }
-    .prophet-card-branded:hover { transform: translateY(-8px); box-shadow: 0 40px 55px -20px rgba(0,0,0,0.25); }
-    .prophet-card-branded::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, #c2813a, #e6b17e, #c2813a); }
-    .prophet-img-branded { width: 100%; border-radius: 28px; margin-bottom: 24px; object-fit: cover; max-height: 300px; width: 100%; border: 3px solid #c2813a; box-shadow: 0 15px 25px -12px rgba(0,0,0,0.2); }
-    .prophet-name-branded { font-size: 1.8rem; font-weight: 800; color: #8b5a2b; margin-bottom: 8px; letter-spacing: -0.3px; }
-    .prophet-title { font-size: 0.9rem; font-weight: 600; color: #c2813a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
-    .prophet-quote { font-style: italic; border-left: 3px solid #c2813a; padding-left: 18px; margin: 18px 0; color: #5a4a38; }
-    
-    section { padding: 80px 0; border-bottom: 1px solid #efe2d4; }
-    .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; }
-    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; border-radius: 3px; }
-    .section-sub { color: #8b765c; max-width: 700px; margin-bottom: 48px; font-size: 1.05rem; line-height: 1.6; }
-    
-    .cards-grid { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 20px; }
-    .ministry-card { background: white; border-radius: 28px; padding: 34px 28px; flex: 1 1 280px; transition: all 0.35s ease; border: 1px solid #eedfcb; box-shadow: 0 8px 20px -12px rgba(0,0,0,0.06); }
-    .ministry-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); border-color: #dcb885; }
-    .ministry-card h3 { font-size: 1.7rem; margin-bottom: 16px; color: #c2813a; }
-    .ministry-card p { color: #5a6e66; line-height: 1.6; }
-    .small-badge { background: #e9dbce; padding: 6px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; }
-    
-    .post-list { display: flex; flex-direction: column; gap: 30px; margin-top: 30px; }
-    .post-item { background: white; border-radius: 28px; padding: 28px 32px; border-left: 6px solid #c2813a; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: 0.3s; }
-    .post-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-    .post-title { font-size: 1.6rem; font-weight: 700; color: #5e3a1f; margin-bottom: 8px; }
-    .post-date { font-size: 0.85rem; color: #a07c56; margin-bottom: 12px; }
-    .post-content { color: #3a4e47; line-height: 1.7; }
-    
-    footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; }
-    
-    @media (max-width: 900px) { .hero-title { font-size: 2.4rem; } .hero-tagline { font-size: 1.2rem; } .section-title { font-size: 2rem; } .container { padding: 0 20px; } .nav-container { flex-direction: column; } .nav-links { justify-content: center; gap: 20px; } .hero-grid { flex-direction: column; text-align: center; } .hero-content { text-align: center; } .hero-tagline { border-left: none; padding-left: 0; border-top: 3px solid #c2813a; padding-top: 12px; } .hero-actions { justify-content: center; } .section-title::after { left: 50%; transform: translateX(-50%); width: 70px; } }
+    .hero-image img { max-width: 100%; border-radius: 32px; box-shadow: 0 30px 50px -20px rgba(0,0,0,0.25); border: 6px solid #fff; object-fit: cover; max-height: 420px; animation: float 6s ease-in-out infinite; }
+
+    /* ── Sections ── */
+    section { padding: 70px 0; border-bottom: 1px solid #efe2d4; }
+    .section-title { font-size: 2.8rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; letter-spacing: -0.5px; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 4px; background: linear-gradient(90deg, #c2813a, #f5d6a8); border-radius: 4px; }
+    .section-title span { color: #c2813a; }
+    .section-sub { color: #8b765c; max-width: 680px; margin-bottom: 48px; font-size: 1.1rem; line-height: 1.7; font-family: 'Inter', sans-serif; }
+
+    /* ── Cards ── */
+    .cards-grid { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 16px; }
+    .ministry-card { background: #fff; border-radius: 28px; padding: 32px 28px; flex: 1 1 260px; transition: 0.4s; border: 1px solid #eedfcb; box-shadow: 0 6px 20px -10px rgba(0,0,0,0.06); }
+    .ministry-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12); border-color: #c2813a; }
+    .ministry-card h3 { font-size: 1.8rem; margin-bottom: 14px; color: #c2813a; font-family: 'Playfair Display', serif; }
+    .ministry-card p { color: #5a6e66; line-height: 1.7; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
+    .small-badge { background: linear-gradient(135deg, #e9dbce, #f5ede3); padding: 4px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── Prophet Card ── */
+    .prophet-card-branded { background: linear-gradient(145deg, #ffffff, #fef7ef); border-radius: 40px; padding: 32px; box-shadow: 0 25px 45px -18px rgba(0,0,0,0.12); border: 1px solid rgba(194,129,58,0.15); transition: 0.4s; margin-top: 24px; }
+    .prophet-card-branded:hover { transform: translateY(-5px); box-shadow: 0 35px 55px -20px rgba(0,0,0,0.18); }
+    .prophet-card-branded .prophet-img { width: 100%; border-radius: 28px; border: 4px solid #c2813a; box-shadow: 0 15px 30px -12px rgba(0,0,0,0.15); }
+    .prophet-card-branded h3 { font-size: 2rem; font-weight: 800; color: #8b5a2b; font-family: 'Playfair Display', serif; }
+    .prophet-card-branded .prophet-title { color: #c2813a; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 12px; font-family: 'Inter', sans-serif; }
+    .prophet-card-branded .prophet-quote { font-style: italic; border-left: 4px solid #c2813a; padding-left: 20px; margin: 16px 0; color: #5a4a38; font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; }
+
+    /* ── Posts ── */
+    .post-list { display: flex; flex-direction: column; gap: 36px; margin-top: 24px; }
+    .post-item { background: #fff; border-radius: 28px; padding: 32px 36px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); border: 1px solid #ede0d0; transition: 0.3s; }
+    .post-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.07); transform: translateY(-3px); }
+    .post-title { font-size: 1.6rem; font-weight: 700; color: #5e3a1f; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+    .post-date { font-size: 0.8rem; color: #a07c56; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
+    .post-content { color: #3a4e47; line-height: 1.8; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
+    .post-video { margin: 16px 0; border-radius: 16px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
+    .post-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ── Reactions ── */
+    .reactions { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; padding: 12px 0; border-top: 2px solid #f0e6dc; border-bottom: 2px solid #f0e6dc; }
+    .reaction-btn { background: #f8f2ea; border: none; padding: 6px 18px; border-radius: 40px; font-size: 1rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; }
+    .reaction-btn:hover { background: #ede0d0; transform: scale(1.05); }
+    .reaction-btn.active { background: #c2813a; color: #fff; }
+    .reaction-count { font-weight: 600; font-size: 0.8rem; }
+
+    /* ── Comments ── */
+    .comments-section { margin-top: 18px; }
+    .comment-form { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .comment-form input { flex: 1; padding: 10px 16px; border-radius: 30px; border: 2px solid #dccdbd; font-family: 'Inter', sans-serif; min-width: 120px; font-size: 0.9rem; transition: 0.3s; }
+    .comment-form input:focus { border-color: #c2813a; outline: none; }
+    .comment-form button { background: linear-gradient(135deg, #c2813a, #a5682e); color: #fff; border: none; padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .comment-form button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(194,129,58,0.3); }
+    .comment-list { display: flex; flex-direction: column; gap: 12px; }
+    .comment-item { background: #faf5ef; border-radius: 16px; padding: 14px 18px; border-left: 3px solid #c2813a; }
+    .comment-author { font-weight: 600; color: #5e3a1f; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .comment-text { color: #3a4e47; margin: 4px 0; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
+    .comment-date { font-size: 0.65rem; color: #a07c56; font-family: 'Inter', sans-serif; }
+    .comment-replies { margin-left: 30px; margin-top: 10px; border-left: 2px solid #e0d4c6; padding-left: 16px; }
+    .reply-item { background: #f5ede3; border-radius: 12px; padding: 8px 14px; margin-top: 6px; }
+    .reply-form { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .reply-form input { flex: 1; padding: 6px 12px; border-radius: 30px; border: 2px solid #dccdbd; font-family: 'Inter', sans-serif; min-width: 100px; font-size: 0.8rem; }
+    .reply-form input:focus { border-color: #c2813a; outline: none; }
+    .reply-form button { background: #8b765c; color: #fff; border: none; padding: 6px 16px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 0.75rem; transition: 0.3s; font-family: 'Inter', sans-serif; }
+    .reply-form button:hover { background: #6b5a44; transform: translateY(-2px); }
+
+    .loading-spinner { text-align: center; padding: 40px; color: #8b765c; font-family: 'Inter', sans-serif; font-size: 1.1rem; }
+
+    /* ── Footer ── */
+    footer { background: linear-gradient(135deg, #1e2a2a, #2a3a3a); color: #e0cfbe; padding: 40px 0 30px; text-align: center; border-top: 3px solid #c2813a; }
+    footer .footer-logo { font-size: 1.5rem; font-weight: 700; color: #f5d6a8; font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    footer .footer-logo span { color: #c2813a; }
+    footer .footer-social { display: flex; justify-content: center; gap: 24px; margin: 16px 0; }
+    footer .footer-social a { color: #e0cfbe; text-decoration: none; font-size: 0.9rem; transition: 0.3s; font-family: 'Inter', sans-serif; }
+    footer .footer-social a:hover { color: #f5d6a8; transform: translateY(-2px); }
+
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2.6rem; }
+      .hero-tagline { font-size: 1.2rem; }
+      .section-title { font-size: 2.2rem; }
+      .container { padding: 0 16px; }
+      .nav-container { flex-direction: column; }
+      .nav-links { justify-content: center; gap: 14px; }
+      .hero-grid { flex-direction: column; text-align: center; }
+      .hero-content { text-align: center; }
+      .hero-tagline { border-left: none; padding-left: 0; border-top: 3px solid #c2813a; padding-top: 14px; }
+      .hero-actions { justify-content: center; }
+      .section-title::after { left: 50%; transform: translateX(-50%); }
+      .section-title { display: block; text-align: center; }
+      .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
+      .logo-img { height: 48px; width: 48px; }
+      .post-item { padding: 20px; }
+    }
   </style>
 </head>
 <body>
-<header class="navbar">
-  <div class="container nav-container">
-    <div class="logo-area">
-      <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" onerror="this.src='https://placehold.co/80x80?text=PFFM'">
-      <div class="logo-text">
-        <h3>PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h3>
-        <p>Healing Nations Church</p>
-      </div>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="ministries.html">Ministries</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="donation.html" class="btn-primary btn-donate" style="background:#2a7f6e;">💖 Donate</a></li>
-      <li><a href="admin.html" class="btn-outline" style="border-color:#6b4c3c; color:#6b4c3c;">🔐 Admin</a></li>
-      <li><a href="services.html" class="btn-primary" style="background:#9b6e3e; padding:8px 24px;">Plan Visit</a></li>
-    </ul>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <h1 class="hero-title animate-left">PROPHETIC FLAMES<br>OF FIRE MINISTRIES</h1>
-      <div class="hero-subtitle animate-left fade-up-delay-1">Healing Nations Church</div>
-      <div class="hero-tagline animate-left fade-up-delay-2">Where Broken Hearts Find Wholeness</div>
-      <p class="hero-desc animate-left fade-up-delay-3"><strong>Vision:</strong> Equipping people through the prophetic voice — raising a generation that carries healing, deliverance, and the sound of heaven to the nations.</p>
-      <div class="hero-actions animate-left fade-up-delay-4">
-        <a href="services.html" class="btn-primary">Plan Your Visit</a>
-        <a href="contact.html" class="btn-outline">Prayer Line</a>
-        <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" class="btn-whatsapp">📱 WhatsApp Channel</a>
-      </div>
-      <div class="hero-location-badge animate-left fade-up-delay-5">📍 MUNGWI & KASAMA | Northern Province, Zambia | Sundays 9:00 AM</div>
-    </div>
-    <div class="hero-image animate-right">
-      <img src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" onerror="this.src='https://placehold.co/500x400'">
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-title animate-up">The Prophet & Founder</h2>
-    <div class="prophet-card-branded animate-scale" style="margin-top: 30px;">
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-        <div style="flex: 0.8;">
-          <img class="prophet-img-branded" src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent - Founder">
-        </div>
-        <div style="flex: 1.2;">
-          <div class="prophet-name-branded">Prophet CK Innocent</div>
-          <div class="prophet-title">✦ Apostle of Healing & Deliverance ✦</div>
-          <p><strong>Called at childhood to minister healing, deliverance, and prophesy to the nations of the world.</strong> He is the Founder and President of <strong>PROPHETIC FLAMES OF FIRE MINISTRIES A.K.A HEALING NATIONS CHURCH</strong> located in Mungwi, Northern Province of Zambia.</p>
-          <div class="prophet-quote">"The fire of the prophetic has been burning in me since my youth. I carry a mandate to see broken hearts restored, nations awakened, and the glory of God manifested through signs and wonders."</div>
-          <p>With a proven track record of supernatural miracles, prophetic accuracy, and deliverance, Prophet CK Innocent travels across Zambia and beyond, equipping believers to walk in the supernatural.</p>
-          <div class="small-badge" style="margin-top: 18px;">🔥 Prophetic Flames of Fire Ministries 🔥</div>
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo-area">
+        <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" onerror="this.src='https://placehold.co/80x80?text=PFFM'" />
+        <div class="logo-text">
+          <h3>PROPHETIC <span>FLAMES</span><br />OF FIRE</h3>
+          <p>Healing Nations Church</p>
         </div>
       </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ministries.html">Ministries</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="live.html">📺 Live</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donation.html" class="btn-primary btn-donate">💖 Donate</a></li>
+        <li><a href="admin.html" class="btn-outline">🔐 Admin</a></li>
+        <li><a href="services.html" class="btn-primary">Plan Visit</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="ticker-wrap">
+    <div class="ticker-content" id="tickerContent">
+      <span class="ticker-item">🔥 <strong>Prophetic Flames of Fire Ministries</strong> — Healing Nations Church</span>
+      <span class="ticker-item">📞 Prayer Line: <strong>0570026004</strong></span>
+      <span class="ticker-item">📍 Mungwi & Kasama, Northern Province, Zambia</span>
+      <span class="ticker-item">🕊️ Sunday 9AM | Wednesday 2PM | Friday 2PM Prophetic</span>
+      <span class="ticker-item">💖 Donations: <strong>+260 776 160997</strong></span>
+      <span class="ticker-item">📱 Follow on WhatsApp: <strong>PROPHET CK INNOCENT MINISTRIES</strong></span>
+      <span class="ticker-item">✉️ <strong>Kprophetinnocent@gmail.com</strong></span>
     </div>
   </div>
-</section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title animate-up">Powerful Ministries</h2>
-    <p class="section-sub animate-up">Experience healing, prophecy, and community transformation.</p>
-    <div class="cards-grid">
-      <div class="ministry-card animate-scale"><h3>🕊️ Healing Services</h3><p>Wednesday 2PM — Miracles, deliverance, and prayer for the sick. God's healing power flows.</p></div>
-      <div class="ministry-card animate-scale"><h3>🔥 Prophetic Service</h3><p>Friday 2PM — Prophetic direction, impartation, and worship. The voice of God for your life.</p><div class="small-badge">🔥 Live Prophecy</div></div>
-      <div class="ministry-card animate-scale"><h3>🌱 Youth Arise</h3><p>Equipping the next generation with prophetic fire and leadership training.</p></div>
-      <div class="ministry-card animate-scale"><h3>🤝 Outreach Missions</h3><p>Feeding programs, medical camps, and evangelism across Northern Province.</p></div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-title animate-left">PROPHETIC <span>FLAMES</span><br />OF FIRE</h1>
+        <div class="hero-subtitle animate-left fade-up-delay-1">Healing Nations Church</div>
+        <div class="hero-tagline animate-left fade-up-delay-2">Where Broken Hearts Find Wholeness</div>
+        <p class="hero-desc animate-left fade-up-delay-3"><strong>Vision:</strong> Equipping people through the prophetic voice — raising a generation that carries healing, deliverance, and the sound of heaven to the nations.</p>
+        <div class="hero-actions animate-left fade-up-delay-4">
+          <a href="services.html" class="btn-primary">Plan Your Visit</a>
+          <a href="contact.html" class="btn-outline">Prayer Line</a>
+          <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" class="btn-whatsapp">📱 WhatsApp Channel</a>
+        </div>
+        <div class="hero-location-badge animate-left fade-up-delay-5">📍 MUNGWI & KASAMA | Northern Province, Zambia | Sundays 9:00 AM</div>
+      </div>
+      <div class="hero-image animate-right">
+        <img src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" onerror="this.src='https://placehold.co/500x400'" />
+      </div>
     </div>
-  </div>
-</section>
-
-<section id="updates">
-  <div class="container">
-    <h2 class="section-title animate-up">Ministry Updates</h2>
-    <p class="section-sub animate-up">Stay connected with the latest news, prophetic words, and announcements from Prophet CK Innocent.</p>
-    <div id="postContainer" class="post-list">
-      <p style="color:#8b765c; font-style:italic;">Loading updates...</p>
+  </section>
+  
+  <section>
+    <div class="container">
+      <h2 class="section-title animate-up">The <span>Prophet</span> & Founder</h2>
+      <div class="prophet-card-branded animate-scale">
+        <div style="display: flex; flex-wrap: wrap; gap: 36px; align-items: center;">
+          <div style="flex: 0.8;">
+            <img class="prophet-img" src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" />
+          </div>
+          <div style="flex: 1.2;">
+            <h3>Prophet CK Innocent</h3>
+            <div class="prophet-title">✦ Apostle of Healing & Deliverance ✦</div>
+            <p><strong>Called at childhood to minister healing, deliverance, and prophesy to the nations of the world.</strong> He is the Founder and President of <strong>PROPHETIC FLAMES OF FIRE MINISTRIES A.K.A HEALING NATIONS CHURCH</strong> located in Mungwi, Northern Province of Zambia.</p>
+            <div class="prophet-quote">"The fire of the prophetic has been burning in me since my youth. I carry a mandate to see broken hearts restored, nations awakened, and the glory of God manifested through signs and wonders."</div>
+            <p>With a proven track record of supernatural miracles, prophetic accuracy, and deliverance, Prophet CK Innocent travels across Zambia and beyond, equipping believers to walk in the supernatural.</p>
+            <div class="small-badge" style="margin-top: 14px;">🔥 Prophetic Flames of Fire Ministries 🔥</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container">
-    <p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p>
-    <p style="margin: 12px 0;">Mungwi & Kasama, Northern Province, Zambia | Sunday 9:00 AM | Wednesday 2PM | Friday 2PM Prophetic</p>
-    <p>📞 Prayer Line: 0570026004 | ✉️ healingnations@propheticflames.com</p>
-    <p style="margin-top: 16px;"><a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" style="color: #25D366; text-decoration: none;">📱 Follow on WhatsApp: PROPHET CK INNOCENT MINISTRIES (Supernatural)</a></p>
-    <p style="margin-top: 24px; font-size:0.8rem;">© 2026 • Equipping people through the prophetic voice</p>
-  </div>
-</footer>
+    <section>
+    <div class="container">
+      <h2 class="section-title animate-up">Powerful <span>Ministries</span></h2>
+      <p class="section-sub animate-up">Experience healing, prophecy, and community transformation.</p>
+      <div class="cards-grid">
+        <div class="ministry-card animate-scale"><h3>🕊️ Healing Services</h3><p>Wednesday 2PM — Miracles, deliverance, and prayer for the sick. God's healing power flows.</p></div>
+        <div class="ministry-card animate-scale"><h3>🔥 Prophetic Service</h3><p>Friday 2PM — Prophetic direction, impartation, and worship. The voice of God for your life.</p><div class="small-badge">🔥 Live Prophecy</div></div>
+        <div class="ministry-card animate-scale"><h3>🌱 Youth Arise</h3><p>Equipping the next generation with prophetic fire and leadership training.</p></div>
+        <div class="ministry-card animate-scale"><h3>🤝 Outreach Missions</h3><p>Feeding programs, medical camps, and evangelism across Northern Province.</p></div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  const STORAGE_KEY = 'pffm_posts';
-  function loadPosts() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
-  }
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-  function renderPublicPosts() {
-    const container = document.getElementById('postContainer');
-    const posts = loadPosts();
-    if (posts.length === 0) {
-      container.innerHTML = `<p style="color:#8b765c; font-style:italic;">No updates yet. Stay tuned for news from the ministry.</p>`;
-      return;
+  <section id="updates">
+    <div class="container">
+      <h2 class="section-title animate-up">Ministry <span>Updates</span></h2>
+      <p class="section-sub animate-up">Stay connected with the latest news, prophetic words, and announcements from Prophet CK Innocent.</p>
+      <div id="postContainer" class="post-list">
+        <div class="loading-spinner">Loading updates...</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-logo">🔥 PROPHETIC <span>FLAMES</span> OF FIRE</div>
+      <p style="font-size:0.9rem; margin-bottom:4px;">Healing Nations Church</p>
+      <p style="margin: 10px 0; font-family: 'Inter', sans-serif; font-size:0.85rem;">Mungwi & Kasama, Northern Province, Zambia | Sunday 9:00 AM | Wednesday 2PM | Friday 2PM Prophetic</p>
+      <p style="font-family: 'Inter', sans-serif; font-size:0.85rem;">📞 Prayer Line: 0570026004 | ✉️ Kprophetinnocent@gmail.com</p>
+      <div class="footer-social">
+        <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank">📱 WhatsApp Channel</a>
+        <a href="live.html">📺 Live Stream</a>
+        <a href="donation.html">💖 Donate</a>
+        <a href="contact.html">📞 Contact</a>
+      </div>
+      <p style="margin-top: 16px; font-size:0.7rem; opacity:0.6;">© 2026 • Equipping people through the prophetic voice</p>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/analytics": "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js",
+        "firebase/storage": "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
+      }
     }
-    const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
-    container.innerHTML = sorted.map(post => `
-      <div class="post-item">
-        <div class="post-title">${escapeHtml(post.title)}</div>
-        <div class="post-date">📅 ${new Date(post.date).toLocaleDateString('en-ZM', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-        <div class="post-content">${escapeHtml(post.content).replace(/\n/g, '<br>')}</div>
-      </div>
-    `).join('');
-  }
-  renderPublicPosts();
-</script>
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    import { 
+      getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, 
+      onSnapshot, query, orderBy, serverTimestamp, increment, arrayUnion, getDoc 
+    } from "firebase/firestore";
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g",
+      authDomain: "prophetic-flames-fire.firebaseapp.com",
+      projectId: "prophetic-flames-fire",
+      storageBucket: "prophetic-flames-fire.firebasestorage.app",
+      messagingSenderId: "1039526655615",
+      appId: "1:1039526655615:web:c5a68086c00804253d314a",
+      measurementId: "G-7RXNMMSHVP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // ── Track user for auth state ──
+    let currentUser = null;
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ── Reactions ──
+    async function handleReaction(postId, emoji) {
+      if (!currentUser) {
+        alert('Please sign in to react. Use the Admin login or create an account.');
+        return;
+      }
+      const postRef = doc(db, 'posts', postId);
+      await updateDoc(postRef, {
+        [`reactions.${emoji}`]: increment(1)
+      });
+    }
+
+    // ── Comments ──
+    async function addComment(postId, name, text) {
+      if (!currentUser) {
+        alert('Please sign in to comment. Use the Admin login or create an account.');
+        return;
+      }
+      const postRef = doc(db, 'posts', postId);
+      const comment = {
+        id: Date.now().toString(36) + Math.random().toString(36).substr(2, 4),
+        name: name || currentUser.email || 'Anonymous',
+        text: text,
+        date: new Date().toISOString(),
+        replies: []
+      };
+      await updateDoc(postRef, {
+        comments: arrayUnion(comment)
+      });
+    }
+
+    async function addReply(postId, commentId, name, text) {
+      if (!currentUser) {
+        alert('Please sign in to reply.');
+        return;
+      }
+      const postRef = doc(db, 'posts', postId);
+      const postSnap = await getDoc(postRef);
+      const post = postSnap.data();
+      const comments = post.comments || [];
+      const commentIndex = comments.findIndex(c => c.id === commentId);
+      if (commentIndex === -1) return;
+      
+      const reply = {
+        id: Date.now().toString(36) + Math.random().toString(36).substr(2, 3),
+        name: name || currentUser.email || 'Anonymous',
+        text: text,
+        date: new Date().toISOString()
+      };
+      
+      comments[commentIndex].replies.push(reply);
+      await updateDoc(postRef, { comments });
+    }
+
+    // ── Render Posts ──
+    function renderPosts(posts) {
+      const container = document.getElementById('postContainer');
+      if (!posts || posts.length === 0) {
+        container.innerHTML = `<p style="color:#8b765c; font-style:italic; font-family:'Inter',sans-serif;">No updates yet. Stay tuned for news from the ministry.</p>`;
+        return;
+      }
+
+      const sorted = [...posts].sort((a, b) => b.date?.toMillis?.() - a.date?.toMillis?.() || 0);
+      
+      container.innerHTML = sorted.map(post => {
+        const data = post.data;
+        const reactions = data.reactions || {};
+        const reactionEmojis = ['❤️', '🙏', '🔥', '👍'];
+        const reactionHtml = reactionEmojis.map(emoji => `
+          <button class="reaction-btn" onclick="window.handleReaction('${post.id}', '${emoji}')">
+            ${emoji} <span class="reaction-count">${reactions[emoji] || 0}</span>
+          </button>
+        `).join('');
+
+        const videoHtml = data.videoUrl ? `
+          <div class="post-video">
+            <iframe src="https://www.youtube.com/embed/${data.videoUrl}" allowfullscreen loading="lazy"></iframe>
+          </div>
+        ` : '';
+
+        const comments = data.comments || [];
+        const commentsHtml = comments.map(comment => `
+          <div class="comment-item">
+            <div class="comment-author">${escapeHtml(comment.name)}</div>
+            <div class="comment-text">${escapeHtml(comment.text)}</div>
+            <div class="comment-date">${new Date(comment.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
+            <div class="comment-replies">
+              ${(comment.replies || []).map(reply => `
+                <div class="reply-item">
+                  <div class="comment-author">${escapeHtml(reply.name)}</div>
+                  <div class="comment-text">${escapeHtml(reply.text)}</div>
+                  <div class="comment-date">${new Date(reply.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
+                </div>
+              `).join('')}
+              <form class="reply-form" onsubmit="event.preventDefault(); window.addReply('${post.id}', '${comment.id}', document.getElementById('replyName_${comment.id}').value || '', document.getElementById('replyText_${comment.id}').value); document.getElementById('replyText_${comment.id}').value = '';">
+                <input type="text" id="replyName_${comment.id}" placeholder="Your name" style="width:100px;">
+                <input type="text" id="replyText_${comment.id}" placeholder="Write a reply..." required>
+                <button type="submit">Reply</button>
+              </form>
+            </div>
+          </div>
+        `).join('');
+
+        return `
+          <div class="post-item">
+            <div class="post-title">${escapeHtml(data.title)}</div>
+            <div class="post-date">📅 ${data.date ? new Date(data.date.toMillis()).toLocaleDateString('en-ZM', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Just now'}</div>
+            <div class="post-content">${escapeHtml(data.content).replace(/\n/g, '<br>')}</div>
+            ${videoHtml}
+            <div class="reactions">${reactionHtml}</div>
+            <div class="comments-section">
+              <div class="comment-list">${commentsHtml}</div>
+              <form class="comment-form" onsubmit="event.preventDefault(); window.addComment('${post.id}', document.getElementById('commentName_${post.id}').value || '', document.getElementById('commentText_${post.id}').value); document.getElementById('commentText_${post.id}').value = '';">
+                <input type="text" id="commentName_${post.id}" placeholder="Your name" style="flex:0.4;">
+                <input type="text" id="commentText_${post.id}" placeholder="Write a comment..." required style="flex:1;">
+                <button type="submit">Comment</button>
+              </form>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      window.handleReaction = handleReaction;
+      window.addComment = addComment;
+      window.addReply = addReply;
+    }
+
+    // ── Live Updates ──
+    const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
+    onSnapshot(q, (snapshot) => {
+      const posts = [];
+      snapshot.forEach((doc) => {
+        posts.push({ id: doc.id, data: doc.data() });
+      });
+      renderPosts(posts);
+    }, (error) => {
+      console.error('Error loading posts:', error);
+      document.getElementById('postContainer').innerHTML = `
+        <p style="color:#b33c3c; font-family:'Inter',sans-serif;">Error loading posts. Please refresh.</p>
+      `;
+    });
+
+    // ── Ticker ──
+    async function loadTicker() {
+      try {
+        const tickerRef = doc(db, 'settings', 'ticker');
+        const snap = await getDoc(tickerRef);
+        if (snap.exists()) {
+          const items = snap.data().items || [];
+          const container = document.getElementById('tickerContent');
+          container.innerHTML = items.map(item => `<span class="ticker-item">${item}</span>`).join('');
+        }
+      } catch (e) {
+        console.error('Error loading ticker:', e);
+      }
+    }
+    loadTicker();
+  </script>
 </body>
 </html>
