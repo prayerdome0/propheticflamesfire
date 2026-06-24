@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Prophetic Flames of Fire Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fefaf5; color: #1e2a2f; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-    @keyframes slideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-    .animate-up { animation: slideUp 0.6s ease forwards; }
-    .navbar { background: rgba(255, 252, 247, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e8dccc; padding: 14px 0; }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .logo-img { height: 54px; border-radius: 14px; padding: 5px; }
-    .logo-text h3 { font-size: 1.2rem; font-weight: 700; color: #8b5a2b; line-height: 1.3; }
-    .logo-text p { font-size: 0.65rem; color: #a07c56; }
-    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.25s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: #c2813a; transition: width 0.3s; }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a:hover { color: #c2813a; }
-    .nav-links .active { color: #c2813a; font-weight: 600; }
-    .nav-links .active::after { width: 100%; }
-    .btn-primary { background: #c2813a; color: white; padding: 10px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
-    .btn-primary:hover { background: #a5682e; transform: translateY(-2px); }
-    .btn-donate { background: #2a7f6e; }
-    section { padding: 80px 0; }
-    .section-title { font-size: 2.4rem; font-weight: 700; color: #5e3a1f; margin-bottom: 28px; position: relative; display: inline-block; }
-    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60px; height: 3px; background: #c2813a; }
-    .service-times { background: linear-gradient(135deg, #fdf7f0, #faf2e9); border-radius: 32px; padding: 42px; margin: 16px 0 20px; }
-    .service-row { display: flex; flex-wrap: wrap; gap: 24px; }
-    .service-block { background: white; border-radius: 24px; padding: 24px 28px; flex: 1; min-width: 190px; text-align: center; transition: 0.25s; border: 1px solid #e9dacb; }
-    .service-block:hover { transform: scale(1.02); border-color: #c2813a; }
-    .service-block h4 { font-size: 1.3rem; font-weight: 700; color: #8b5a2b; margin-bottom: 8px; }
-    .prayer-line { font-size: 1.8rem; font-weight: 800; color: #2a5c4b; letter-spacing: 1px; margin: 20px 0; }
-    hr { border: none; border-top: 2px dotted #decbae; margin: 28px 0; }
-    footer { background: #1e2a2a; color: #e0cfbe; padding: 44px 0; text-align: center; margin-top: 20px; }
-    @media (max-width: 900px) { .container { padding: 0 20px; } .nav-container { flex-direction: column; } .section-title::after { left: 50%; transform: translateX(-50%); } .section-title { text-align: center; display: block; } }
+    .services-hero { background: linear-gradient(135deg, #faf1e6, #f5e8db); padding: 60px 0; text-align: center; }
+    .services-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #6b3f1c; }
+    .services-hero h1 span { color: #c2813a; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 32px; padding: 60px 0; }
+    .service-card { background: #fff; border-radius: 24px; padding: 32px; border: 1px solid #ede0d0; text-align: center; transition: 0.3s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-color: #c2813a; }
+    .service-card .icon { font-size: 3rem; margin-bottom: 12px; }
+    .service-card h3 { font-family: 'Playfair Display', serif; color: #5e3a1f; font-size: 1.4rem; }
+    .service-card .time { font-size: 1.2rem; font-weight: 700; color: #c2813a; margin: 8px 0; }
+    .service-card p { color: #5a6e66; line-height: 1.6; font-size: 0.95rem; }
+    .service-card .location { font-size: 0.85rem; color: #8b765c; margin-top: 8px; }
+    .prayer-section { background: #f8f2ea; padding: 40px; border-radius: 24px; text-align: center; margin: 20px 0 40px; }
+    .prayer-section h2 { font-family: 'Playfair Display', serif; color: #5e3a1f; }
+    .prayer-section .phone { font-size: 2rem; font-weight: 800; color: #2a7f6e; }
   </style>
 </head>
 <body>
-<header class="navbar">
-  <div class="container nav-container">
-    <div><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" style="vertical-align:middle"> <span style="font-weight:700; font-size:1.2rem;">PROPHETIC FLAMES OF FIRE MINISTRIES</span></div>
-    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="services.html" class="active">Services</a></li><li><a href="contact.html">Contact</a></li><li><a href="donation.html" class="btn-primary btn-donate" style="background:#2a7f6e;">💖 Donate</a></li><li><a href="services.html" class="btn-primary" style="padding:8px 24px;">Plan Visit</a></li></ul>
-  </div>
-</header>
-<section>
-  <div class="container">
-    <h2 class="section-title animate-up">Worship & Prayer Gatherings</h2>
-    <div class="service-times animate-up">
-      <div class="service-row">
-        <div class="service-block"><h4>⛪ Sunday Service</h4><p style="font-size:1.4rem; font-weight:700;">9:00 AM</p><p>Morning Worship, Prophetic Word, Holy Communion</p></div>
-        <div class="service-block"><h4>🕯️ Wednesday Healing Service</h4><p style="font-size:1.4rem; font-weight:700;">2:00 PM</p><p>Healing, deliverance, prayer for the sick.</p></div>
-        <div class="service-block"><h4>📯 Friday Prophetic Service</h4><p style="font-size:1.4rem; font-weight:700;">2:00 PM</p><p>Prophetic declaration, worship, impartation</p></div>
-      </div>
-      <hr>
-      <div class="prayer-line">📞 Prayer Line: 0570026004</div>
-      <p style="background:#fff2e6; padding: 12px; border-radius: 60px; text-align:center;"><strong>📍 Locations:</strong> MUNGWI (Main) & KASAMA, Northern Province, Zambia</p>
+  <header class="navbar"><div class="container nav-container"><div class="logo-area"><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" /><div class="logo-text"><h3>PROPHETIC <span>FLAMES</span><br />OF FIRE</h3><p>Healing Nations Church</p></div></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="services.html" class="active">Services</a></li><li><a href="live.html">📺 Live</a></li><li><a href="contact.html">Contact</a></li><li><a href="donation.html" class="btn-primary btn-donate">💖 Donate</a></li><li id="authLinks"><a href="login.html" class="btn-outline">🔐 Login</a></li><li><a href="services.html" class="btn-primary">Plan Visit</a></li></ul></div></header>
+
+  <section class="services-hero"><div class="container"><h1>Worship <span>Services</span></h1><p style="color:#8b765c; font-size:1.1rem; margin-top:12px;">Join us for powerful encounters with God through worship, prayer, and the Word.</p></div></section>
+
+  <section><div class="container">
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">⛪</div><h3>Sunday Service</h3><div class="time">9:00 AM</div><p>Morning Glory Worship & Prophetic Word. Holy Communion and ministry time.</p><div class="location">📍 Mungwi & Kasama</div></div>
+      <div class="service-card"><div class="icon">🕯️</div><h3>Wednesday Healing Service</h3><div class="time">2:00 PM</div><p>Healing, deliverance, and prayer for the sick. Testimonies of God's restoring power.</p><div class="location">📍 Mungwi & Kasama</div></div>
+      <div class="service-card"><div class="icon">📯</div><h3>Friday Prophetic Service</h3><div class="time">2:00 PM</div><p>Prophetic declaration, worship, and impartation. The voice of God for your life.</p><div class="location">📍 Mungwi & Kasama</div></div>
+      <div class="service-card"><div class="icon">🌍</div><h3>Global Prophetic Conference</h3><div class="time">Coming June 2026</div><p>International gathering with Prophet CK Innocent. Register now for this life-changing event.</p><div class="location">📍 Mungwi, Zambia</div></div>
     </div>
-  </div>
-</section>
-<footer><div class="container"><p>🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p>📞 Prayer Line: 0570026004 | ✉️ healingnations@propheticflames.com</p><p>© 2026 • Equipping people through the prophetic voice</p></div></footer>
+
+    <div class="prayer-section"><h2>📞 Prayer Line</h2><p style="color:#8b765c; margin:8px 0;">Call for prayer, counseling, or to share testimonies.</p><div class="phone">0570026004</div><p style="margin-top:12px; font-size:0.9rem; color:#8b765c;">Available 24/7 for urgent prayer needs</p></div>
+  </div></section>
+
+  <footer style="background:linear-gradient(135deg,#1e2a2a,#2a3a3a); color:#e0cfbe; padding:28px 0; text-align:center; margin-top:20px; border-top:3px solid #c2813a;"><div class="container"><p style="font-weight:600;">🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p style="margin:8px 0; font-size:0.85rem;">📞 Prayer Line: 0570026004 | ✉️ Kprophetinnocent@gmail.com</p><p style="font-size:0.75rem; opacity:0.7;">© 2026 • Equipping people through the prophetic voice</p></div></footer>
+
+  <script type="importmap">{"imports":{"firebase/app":"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js","firebase/analytics":"https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js","firebase/auth":"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"}}</script>
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
+    const firebaseConfig = { apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g", authDomain: "prophetic-flames-fire.firebaseapp.com", projectId: "prophetic-flames-fire", storageBucket: "prophetic-flames-fire.firebasestorage.app", messagingSenderId: "1039526655615", appId: "1:1039526655615:web:c5a68086c00804253d314a", measurementId: "G-7RXNMMSHVP" };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user) => {
+      const authLinks = document.getElementById('authLinks');
+      if (user) { authLinks.innerHTML = `<a href="admin.html" class="btn-outline">🔐 Admin</a>`; } 
+      else { authLinks.innerHTML = `<a href="login.html" class="btn-outline">🔐 Login</a>`; }
+    });
+  </script>
 </body>
 </html>

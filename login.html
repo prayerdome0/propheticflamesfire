@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Prophetic Flames of Fire Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefaf5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .auth-container { background: #fff; border-radius: 32px; padding: 48px; max-width: 420px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.08); border: 1px solid #ede0d0; }
+    .auth-container .logo { text-align: center; margin-bottom: 32px; }
+    .auth-container .logo img { height: 64px; width: 64px; border-radius: 50%; border: 3px solid #c2813a; padding: 4px; }
+    .auth-container .logo h2 { font-family: 'Playfair Display', serif; color: #6b3f1c; font-size: 1.5rem; margin-top: 8px; }
+    .auth-container .logo h2 span { color: #c2813a; }
+    .auth-container .logo p { color: #8b765c; font-size: 0.85rem; }
+    .auth-container h1 { font-family: 'Playfair Display', serif; color: #5e3a1f; font-size: 1.8rem; margin-bottom: 8px; }
+    .auth-container .subtitle { color: #8b765c; font-size: 0.9rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-weight: 600; color: #3a4a44; font-size: 0.85rem; margin-bottom: 4px; }
+    .form-group input { width: 100%; padding: 12px 16px; border-radius: 16px; border: 2px solid #dccdbd; font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: 0.3s; }
+    .form-group input:focus { border-color: #c2813a; outline: none; box-shadow: 0 0 0 3px rgba(194,129,58,0.1); }
+    .btn-primary { width: 100%; background: linear-gradient(135deg, #c2813a, #a5682e); border: none; color: #fff; padding: 14px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(194,129,58,0.3); }
+    .btn-google { width: 100%; background: #fff; border: 2px solid #ddd; color: #333; padding: 12px; border-radius: 50px; font-weight: 500; cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .btn-google:hover { background: #f5f5f5; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .auth-divider { display: flex; align-items: center; gap: 16px; margin: 20px 0; color: #8b765c; font-size: 0.85rem; }
+    .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: #dccdbd; }
+    .auth-footer { text-align: center; margin-top: 20px; font-size: 0.85rem; color: #8b765c; }
+    .auth-footer a { color: #c2813a; text-decoration: none; font-weight: 600; }
+    .auth-footer a:hover { text-decoration: underline; }
+    .alert { background: #f5e0e0; color: #b33c3c; padding: 12px 16px; border-radius: 16px; margin-bottom: 16px; font-size: 0.85rem; display: none; }
+    .alert.show { display: block; }
+    .success { background: #e0f0ea; color: #2a7f6e; }
+    @media (max-width: 500px) { .auth-container { padding: 32px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="logo">
+      <img src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" />
+      <h2>PROPHETIC <span>FLAMES</span></h2>
+      <p>Healing Nations Church</p>
+    </div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to access your dashboard and manage content.</p>
+    <div id="alert" class="alert"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="btn-primary">Sign In</button>
+    </form>
+    <div class="auth-divider">or continue with</div>
+    <button id="googleSignIn" class="btn-google">
+      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+      Sign in with Google
+    </button>
+    <div class="auth-footer">
+      Don't have an account? <a href="signup.html">Create one</a><br />
+      <a href="#" id="forgotPassword" style="font-size:0.8rem;">Forgot password?</a>
+    </div>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/analytics": "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g",
+      authDomain: "prophetic-flames-fire.firebaseapp.com",
+      projectId: "prophetic-flames-fire",
+      storageBucket: "prophetic-flames-fire.firebasestorage.app",
+      messagingSenderId: "1039526655615",
+      appId: "1:1039526655615:web:c5a68086c00804253d314a",
+      measurementId: "G-7RXNMMSHVP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    const alertEl = document.getElementById('alert');
+
+    function showAlert(msg, isSuccess = false) {
+      alertEl.textContent = msg;
+      alertEl.className = 'alert show' + (isSuccess ? ' success' : '');
+      setTimeout(() => alertEl.classList.remove('show'), 5000);
+    }
+
+    // Email Login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        showAlert('✅ Login successful! Redirecting...', true);
+        setTimeout(() => window.location.href = 'admin.html', 1000);
+      } catch (error) {
+        showAlert('❌ ' + error.message);
+      }
+    });
+
+    // Google Sign-In
+    document.getElementById('googleSignIn').addEventListener('click', async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+        showAlert('✅ Google sign-in successful!', true);
+        setTimeout(() => window.location.href = 'admin.html', 1000);
+      } catch (error) {
+        showAlert('❌ ' + error.message);
+      }
+    });
+
+    // Forgot Password
+    document.getElementById('forgotPassword').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      if (!email) { showAlert('Please enter your email address first.'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showAlert('✅ Password reset email sent! Check your inbox.', true);
+      } catch (error) {
+        showAlert('❌ ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
