@@ -47,13 +47,7 @@
     @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(194,129,58,0.2); } 50% { box-shadow: 0 0 50px rgba(194,129,58,0.4); } }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
     @keyframes tickerScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    @keyframes borderGlow { 0%, 100% { border-color: var(--blue-primary); } 50% { border-color: var(--gold-primary); } }
-    @keyframes slideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
-
     .animate-up { animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
     .animate-down { animation: fadeInDown 0.9s ease forwards; }
     .animate-left { animation: fadeInLeft 0.8s ease forwards; }
@@ -194,12 +188,24 @@
     .event-card p { color: var(--gray); font-size: 0.9rem; font-family: 'Inter', sans-serif; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials-slider { overflow: hidden; position: relative; margin-top: 20px; }
-    .testimonials-track { display: flex; transition: 0.5s ease; }
-    .testimonial-card { min-width: 100%; padding: 20px; text-align: center; }
-    .testimonial-card .stars { color: var(--gold-primary); font-size: 1.5rem; margin-bottom: 12px; }
-    .testimonial-card blockquote { font-size: 1.2rem; font-style: italic; color: var(--text); font-family: 'Cormorant Garamond', serif; max-width: 700px; margin: 0 auto; }
-    .testimonial-card .author { margin-top: 16px; font-weight: 600; color: var(--blue-dark); font-family: 'Inter', sans-serif; }
+    .testimonials-section { background: var(--blue-light); padding: 60px 0; border-radius: 40px; margin: 20px 0; }
+    .testimonial-form { background: #fff; border-radius: 24px; padding: 32px; border: 2px solid var(--gold-primary); margin-bottom: 40px; }
+    .testimonial-form h3 { font-family: 'Playfair Display', serif; color: var(--blue-dark); margin-bottom: 16px; }
+    .testimonial-form input, .testimonial-form textarea, .testimonial-form select { width: 100%; padding: 12px 16px; border-radius: 16px; border: 2px solid var(--blue-light); font-family: 'Inter', sans-serif; margin-bottom: 14px; font-size: 0.95rem; transition: 0.3s; }
+    .testimonial-form input:focus, .testimonial-form textarea:focus, .testimonial-form select:focus { border-color: var(--gold-primary); outline: none; }
+    .testimonial-form textarea { min-height: 100px; resize: vertical; }
+    .testimonial-form .rating-select { display: flex; gap: 8px; margin-bottom: 14px; }
+    .testimonial-form .rating-select button { background: var(--blue-light); border: none; padding: 8px 16px; border-radius: 30px; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+    .testimonial-form .rating-select button:hover, .testimonial-form .rating-select button.active { background: var(--gold-primary); color: #fff; transform: scale(1.05); }
+    
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 20px; }
+    .testimonial-card { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--blue-light); transition: 0.3s; box-shadow: var(--shadow-sm); }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold-primary); }
+    .testimonial-card .stars { color: var(--gold-primary); font-size: 1.2rem; margin-bottom: 8px; }
+    .testimonial-card .text { font-style: italic; color: var(--text); line-height: 1.7; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+    .testimonial-card .author { font-weight: 600; color: var(--blue-dark); margin-top: 12px; font-family: 'Inter', sans-serif; }
+    .testimonial-card .location { color: var(--gray); font-size: 0.8rem; font-family: 'Inter', sans-serif; }
+    .testimonial-card .date { color: var(--gray); font-size: 0.7rem; margin-top: 4px; font-family: 'Inter', sans-serif; }
 
     /* ── SECTIONS ── */
     section { padding: 70px 0; border-bottom: 1px solid var(--blue-light); }
@@ -211,14 +217,6 @@
     /* ── LOADING ── */
     .loading-spinner { text-align: center; padding: 40px; color: var(--gray); font-family: 'Inter', sans-serif; font-size: 1.1rem; }
 
-    /* ── FLOATING ADMIN BAR ── */
-    .floating-admin-bar { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: none; flex-direction: column; gap: 10px; }
-    .floating-admin-bar.show { display: flex; }
-    .floating-admin-bar .fab-btn { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; border: none; box-shadow: var(--shadow-blue); cursor: pointer; transition: 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
-    .floating-admin-bar .fab-btn:hover { transform: scale(1.1) translateY(-2px); }
-    .floating-admin-bar .fab-btn.gold { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); box-shadow: var(--shadow-gold); }
-    .floating-admin-bar .fab-btn.danger { background: #b33c3c; box-shadow: 0 8px 25px rgba(179,60,60,0.4); }
-
     /* ── USER MENU ── */
     .user-menu { position: relative; }
     .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: 0.3s; border: 2px solid var(--gold-primary); }
@@ -229,6 +227,9 @@
     .user-dropdown a:hover { background: var(--blue-light); color: var(--gold-primary); }
     .user-dropdown .divider { height: 1px; background: var(--blue-light); margin: 6px 16px; }
     .user-dropdown .logout { color: #b33c3c; }
+
+    /* ── TOAST ── */
+    .toast-msg { position: fixed; bottom: 30px; right: 30px; background: var(--blue-dark); color: #fff; padding: 16px 28px; border-radius: 16px; box-shadow: var(--shadow-lg); z-index: 9999; max-width: 400px; border-left: 4px solid var(--gold-primary); animation: fadeInUp 0.4s ease forwards; font-family: 'Inter', sans-serif; }
 
     /* ── FOOTER ── */
     footer { background: linear-gradient(135deg, var(--blue-dark), #1a3a5a); color: #e0cfbe; padding: 40px 0 30px; text-align: center; border-top: 3px solid var(--gold-primary); }
@@ -258,17 +259,19 @@
       .founder-grid { flex-direction: column; text-align: center; }
       .founder-info .quote { border-left: none; padding-left: 0; border-top: 3px solid var(--gold-primary); padding-top: 14px; }
       .founder-stats { justify-content: center; }
-      .floating-admin-bar .fab-btn { width: 48px; height: 48px; font-size: 1rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-form { padding: 20px; }
     }
     @media (max-width: 500px) {
       .hero-title { font-size: 2rem; }
       .section-title { font-size: 1.8rem; }
       .founder-section { padding: 20px; }
+      .testimonial-form .rating-select button { font-size: 1rem; padding: 6px 12px; }
     }
-    
-    </style>
+  </style>
 </head>
 <body>
+
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
@@ -363,7 +366,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- MINISTRIES -->
   <section>
     <div class="container">
@@ -404,16 +407,35 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section>
+  <section class="testimonials-section">
     <div class="container">
       <h2 class="section-title animate-up">Healing <span>Testimonies</span></h2>
-      <p class="section-sub animate-up">Real stories of transformation and divine intervention.</p>
-      <div class="testimonials-slider" id="testimonialSlider">
-        <div class="testimonials-track" id="testimonialTrack">
-          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"I was healed from a chronic condition after Prophet CK Innocent prayed for me. God is truly alive!"</blockquote><div class="author">— Sarah M., Lusaka</div></div>
-          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"My family received restoration and breakthrough. The prophetic word came to pass exactly as spoken."</blockquote><div class="author">— John B., Mungwi</div></div>
-          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"I was delivered from depression and anxiety. The healing service changed my life completely."</blockquote><div class="author">— Grace K., Kasama</div></div>
-        </div>
+      <p class="section-sub animate-up">Share your testimony and let others be encouraged by what God has done for you.</p>
+      
+      <!-- Testimonial Submission Form -->
+      <div class="testimonial-form animate-up">
+        <h3>✍️ Share Your Testimony</h3>
+        <form id="testimonialForm">
+          <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+            <input type="text" id="testimonyName" placeholder="Your Name *" required />
+            <input type="text" id="testimonyLocation" placeholder="Your Location (e.g. Lusaka)" />
+          </div>
+          <div class="rating-select" id="ratingSelect">
+            <label style="font-weight:600; color:var(--text); font-size:0.9rem; margin-right:8px;">Rating:</label>
+            <button type="button" data-rating="5" class="active"></button>
+            <button type="button" data-rating="4"></button>
+            <button type="button" data-rating="3"></button>
+            <button type="button" data-rating="2"></button>
+            <button type="button" data-rating="1"></button>
+          </div>
+          <textarea id="testimonyText" placeholder="Share your testimony... What has God done for you? *" required></textarea>
+          <button type="submit" class="btn-primary btn-gold" style="width:100%;">🙌 Submit Testimony</button>
+        </form>
+      </div>
+
+      <!-- Display Testimonials -->
+      <div id="testimonialsContainer">
+        <div class="loading-spinner">Loading testimonies...</div>
       </div>
     </div>
   </section>
@@ -434,13 +456,6 @@
       <p style="margin-top: 16px; font-size:0.7rem; opacity:0.6;">© 2026 • Equipping people through the prophetic voice</p>
     </div>
   </footer>
-  
-  <!-- FLOATING ADMIN BAR -->
-  <div class="floating-admin-bar" id="floatingAdminBar">
-    <button class="fab-btn" onclick="window.location.href='admin.html'" title="Admin Dashboard"><i class="fas fa-cog"></i></button>
-    <button class="fab-btn gold" onclick="window.location.href='live.html'" title="Live Stream"><i class="fas fa-video"></i></button>
-    <button class="fab-btn danger" id="quickPostBtn" title="Quick Post"><i class="fas fa-plus"></i></button>
-  </div>
 
   <!-- FIREBASE IMPORT MAP -->
   <script type="importmap">
@@ -459,7 +474,7 @@
     import { getAnalytics } from "firebase/analytics";
     import { 
       getFirestore, collection, doc, onSnapshot, query, orderBy, 
-      getDoc, increment, arrayUnion, updateDoc 
+      getDoc, increment, arrayUnion, updateDoc, addDoc, serverTimestamp, getDocs
     } from "firebase/firestore";
     import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -484,7 +499,6 @@
     onAuthStateChanged(auth, (user) => {
       currentUser = user;
       const authLinks = document.getElementById('authLinks');
-      const floatingBar = document.getElementById('floatingAdminBar');
       
       if (user) {
         authLinks.innerHTML = `
@@ -502,10 +516,8 @@
             </div>
           </div>
         `;
-        floatingBar.classList.add('show');
       } else {
         authLinks.innerHTML = `<a href="login.html" class="btn-outline">🔐 Login</a>`;
-        floatingBar.classList.remove('show');
       }
     });
 
@@ -519,10 +531,46 @@
       window.location.href = 'index.html';
     };
 
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('userDropdown');
+      if (dropdown && !e.target.closest('.user-menu')) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // ── TOAST NOTIFICATION ──
+    function showToast(msg, type = 'info') {
+      const existing = document.querySelector('.toast-msg');
+      if (existing) existing.remove();
+      
+      const toast = document.createElement('div');
+      toast.className = 'toast-msg';
+      toast.style.cssText = `
+        position: fixed; bottom: 30px; right: 30px; 
+        background: ${type === 'success' ? 'var(--blue-dark)' : '#b33c3c'}; 
+        color: #fff; padding: 16px 24px; border-radius: 16px; 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+        z-index: 9999; max-width: 380px;
+        font-family: 'Inter', sans-serif;
+        border-left: 4px solid ${type === 'success' ? 'var(--gold-primary)' : '#ff4444'};
+        animation: fadeInUp 0.4s ease forwards;
+      `;
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(20px)';
+        toast.style.transition = '0.4s';
+        setTimeout(() => toast.remove(), 500);
+      }, 5000);
+    }
+
     // ── REACTIONS ──
     async function handleReaction(postId, emoji) {
       if (!currentUser) {
-        alert('Please sign in to react. Create a free account or login.');
+        showToast('Please sign in to react. Create a free account or login.', 'error');
         return;
       }
       try {
@@ -534,7 +582,7 @@
     // ── COMMENTS ──
     async function addComment(postId, name, text) {
       if (!currentUser) {
-        alert('Please sign in to comment.');
+        showToast('Please sign in to comment.', 'error');
         return;
       }
       try {
@@ -624,9 +672,6 @@
             </div>
             <div class="comment-text">${escapeHtml(comment.text)}</div>
             <div class="comment-date">${new Date(comment.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
-            <div class="comment-actions">
-              <button onclick="document.getElementById('replyForm_${comment.id}').style.display = 'flex'">Reply</button>
-            </div>
             <div class="comment-replies">
               ${(comment.replies || []).map(reply => `
                 <div class="reply-item">
@@ -638,11 +683,12 @@
                   <div class="comment-date">${new Date(reply.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
                 </div>
               `).join('')}
-              <form class="reply-form" id="replyForm_${comment.id}" style="display:none;" onsubmit="event.preventDefault(); window.addReply('${post.id}', '${comment.id}', document.getElementById('replyName_${comment.id}').value || '', document.getElementById('replyText_${comment.id}').value); document.getElementById('replyText_${comment.id}').value = ''; document.getElementById('replyForm_${comment.id}').style.display = 'none';">
+              <form class="reply-form" style="display:none;" onsubmit="event.preventDefault(); window.addReply('${post.id}', '${comment.id}', document.getElementById('replyName_${comment.id}').value || '', document.getElementById('replyText_${comment.id}').value); document.getElementById('replyText_${comment.id}').value = ''; this.style.display = 'none';">
                 <input type="text" id="replyName_${comment.id}" placeholder="Your name" style="width:100px;">
                 <input type="text" id="replyText_${comment.id}" placeholder="Write a reply..." required>
                 <button type="submit">Reply</button>
               </form>
+              <button onclick="document.getElementById('replyForm_${comment.id}').style.display = 'flex'" style="background:none; border:none; color:var(--blue-primary); cursor:pointer; font-size:0.75rem; margin-top:4px;">Reply</button>
             </div>
           </div>
         `).join('');
@@ -679,7 +725,7 @@
       window.addComment = addComment;
       window.addReply = addReply;
     }
-
+    
     // ── LONG PRESS FOR REACTIONS ──
     let holdTimeout = null;
     let holdPostId = null;
@@ -733,26 +779,92 @@
     }
     loadTicker();
 
-    // ── TESTIMONIALS SLIDER ──
-    let currentTestimonial = 0;
-    const testimonialTrack = document.getElementById('testimonialTrack');
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    
-    if (testimonialTrack && testimonialCards.length > 0) {
-      setInterval(() => {
-        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-        testimonialTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-      }, 5000);
-    }
+    // ── TESTIMONIALS ──
+    // Rating selector
+    let selectedRating = 5;
+    document.querySelectorAll('#ratingSelect button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#ratingSelect button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedRating = parseInt(this.dataset.rating);
+      });
+    });
 
-    // ── QUICK POST ──
-    document.getElementById('quickPostBtn')?.addEventListener('click', () => {
-      if (currentUser) {
-        window.location.href = 'admin.html#quickPost';
-      } else {
-        window.location.href = 'login.html?redirect=admin.html';
+    // Submit testimony
+    document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('testimonyName').value.trim();
+      const location = document.getElementById('testimonyLocation').value.trim();
+      const text = document.getElementById('testimonyText').value.trim();
+      
+      if (!name || !text) {
+        showToast('Please fill in your name and testimony.', 'error');
+        return;
+      }
+      
+      try {
+        await addDoc(collection(db, 'testimonials'), {
+          name: name,
+          location: location || '',
+          text: text,
+          rating: selectedRating,
+          createdAt: serverTimestamp(),
+          approved: true // Auto-approve for now
+        });
+        
+        showToast('✅ Thank you for sharing your testimony! It has been added.', 'success');
+        document.getElementById('testimonialForm').reset();
+        document.querySelectorAll('#ratingSelect button').forEach(b => b.classList.remove('active'));
+        document.querySelector('#ratingSelect button[data-rating="5"]').classList.add('active');
+        selectedRating = 5;
+        
+        loadTestimonials();
+      } catch (error) {
+        showToast('❌ Error submitting testimony: ' + error.message, 'error');
       }
     });
+
+    // Load and display testimonials
+    async function loadTestimonials() {
+      const container = document.getElementById('testimonialsContainer');
+      try {
+        const q = query(collection(db, 'testimonials'), orderBy('createdAt', 'desc'));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          container.innerHTML = `
+            <div style="text-align:center; padding:40px; color:var(--gray);">
+              <i class="fas fa-comment" style="font-size:2rem; opacity:0.3; display:block; margin-bottom:12px;"></i>
+              <p>No testimonies yet. Be the first to share what God has done for you!</p>
+            </div>
+          `;
+          return;
+        }
+        
+        let html = '<div class="testimonials-grid">';
+        snap.forEach(doc => {
+          const d = doc.data();
+          const stars = '⭐'.repeat(d.rating || 5);
+          const date = d.createdAt ? new Date(d.createdAt.toMillis()).toLocaleDateString('en-ZM', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+          
+          html += `
+            <div class="testimonial-card animate-scale">
+              <div class="stars">${stars}</div>
+              <div class="text">"${escapeHtml(d.text)}"</div>
+              <div class="author">${escapeHtml(d.name)}</div>
+              ${d.location ? `<div class="location">📍 ${escapeHtml(d.location)}</div>` : ''}
+              ${date ? `<div class="date">${date}</div>` : ''}
+            </div>
+          `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+      } catch (error) {
+        container.innerHTML = `<p style="color:#b33c3c; text-align:center;">Error loading testimonies. Please refresh.</p>`;
+        console.error('Testimonials error:', error);
+      }
+    }
 
     // ── NAVBAR SCROLL EFFECT ──
     window.addEventListener('scroll', () => {
@@ -764,13 +876,10 @@
       }
     });
 
-    // ── CLOSE DROPDOWN ON OUTSIDE CLICK ──
-    document.addEventListener('click', (e) => {
-      const dropdown = document.getElementById('userDropdown');
-      if (dropdown && !e.target.closest('.user-menu')) {
-        dropdown.classList.remove('show');
-      }
-    });
+    // ── INITIAL LOAD ──
+    loadTestimonials();
+
+    console.log('🔥 Prophetic Flames of Fire Ministries website loaded successfully!');
   </script>
 </body>
 </html>
