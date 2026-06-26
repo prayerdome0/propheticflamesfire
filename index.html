@@ -7,30 +7,59 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    /* ── RESET & BASE ── */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Cormorant Garamond', 'Playfair Display', serif; background: #fefaf5; color: #1e2a2f; line-height: 1.6; overflow-x: hidden; }
+    :root {
+      --blue-primary: #4A90D9;
+      --blue-light: #E8F4FD;
+      --blue-medium: #B8D4E3;
+      --blue-dark: #2C5F8A;
+      --gold-primary: #C2813A;
+      --gold-light: #F5D6A8;
+      --gold-medium: #D4A84B;
+      --gold-dark: #A0682E;
+      --white: #FFFFFF;
+      --cream: #FEFAF5;
+      --dark: #1E2A2A;
+      --gray: #8B765C;
+      --text: #2C3E50;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+      --shadow-gold: 0 4px 20px rgba(194,129,58,0.3);
+      --shadow-blue: 0 4px 20px rgba(74,144,217,0.3);
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f0e6dc; }
-    ::-webkit-scrollbar-thumb { background: #c2813a; border-radius: 10px; }
-    h1, h2, h3, .logo-font, .hero-title, .section-title { font-family: 'Playfair Display', serif; }
+    ::-webkit-scrollbar-track { background: var(--blue-light); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 10px; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
-    /* ── Animations ── */
+    /* ── ANIMATIONS ── */
     @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-50px); } 100% { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-40px); } 100% { opacity: 1; transform: translateX(0); } }
     @keyframes fadeInRight { 0% { opacity: 0; transform: translateX(40px); } 100% { opacity: 1; transform: translateX(0); } }
     @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
     @keyframes rotateLogo { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(360deg) scale(1); } }
     @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(194,129,58,0.2); } 50% { box-shadow: 0 0 50px rgba(194,129,58,0.4); } }
-    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-    @keyframes tickerScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
-    
+    @keyframes tickerScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes borderGlow { 0%, 100% { border-color: var(--blue-primary); } 50% { border-color: var(--gold-primary); } }
+    @keyframes slideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+
     .animate-up { animation: fadeInUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-down { animation: fadeInDown 0.9s ease forwards; }
     .animate-left { animation: fadeInLeft 0.8s ease forwards; }
     .animate-right { animation: fadeInRight 0.8s ease forwards; }
     .animate-scale { animation: scaleIn 0.7s ease forwards; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
     .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
     .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
     .fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
@@ -38,141 +67,210 @@
     .fade-up-delay-5 { animation-delay: 0.5s; opacity: 0; }
     .fade-up-delay-6 { animation-delay: 0.6s; opacity: 0; }
 
-    /* ── Navbar ── */
-    .navbar { background: rgba(255, 252, 247, 0.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid rgba(194,129,58,0.15); padding: 10px 0; }
+    /* ── NAVBAR ── */
+    .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--blue-light); padding: 10px 0; transition: 0.3s; }
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
     .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .logo-area { display: flex; align-items: center; gap: 14px; }
-    .logo-img { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; padding: 4px; background: linear-gradient(135deg, #c2813a, #f5d6a8); animation: rotateLogo 20s linear infinite, glowPulse 3s ease-in-out infinite; box-shadow: 0 0 30px rgba(194,129,58,0.15); border: 3px solid #c2813a; }
-    .logo-text h3 { font-size: 1.3rem; font-weight: 700; color: #6b3f1c; line-height: 1.2; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-    .logo-text h3 span { color: #c2813a; }
-    .logo-text p { font-size: 0.7rem; color: #a07c56; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .logo-img { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; padding: 4px; background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); animation: rotateLogo 20s linear infinite, glowPulse 3s ease-in-out infinite; box-shadow: 0 0 30px rgba(194,129,58,0.15); border: 3px solid var(--gold-primary); }
+    .logo-text h3 { font-size: 1.3rem; font-weight: 700; color: var(--blue-dark); line-height: 1.2; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+    .logo-text h3 span { color: var(--gold-primary); }
+    .logo-text p { font-size: 0.7rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
     .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 500; color: #3a4a44; transition: 0.3s; font-size: 0.95rem; position: relative; font-family: 'Inter', sans-serif; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #c2813a, #f5d6a8); transition: width 0.3s; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: var(--text); transition: 0.3s; font-size: 0.95rem; position: relative; font-family: 'Inter', sans-serif; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold-primary), var(--gold-light)); transition: width 0.3s; }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: #c2813a; }
-    .btn-primary { background: linear-gradient(135deg, #c2813a, #a5682e); border: none; color: #fff; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 4px 15px rgba(194,129,58,0.3); font-family: 'Inter', sans-serif; }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(194,129,58,0.4); }
-    .btn-donate { background: linear-gradient(135deg, #2a7f6e, #1e6254); box-shadow: 0 4px 15px rgba(42,127,110,0.3); }
-    .btn-donate:hover { box-shadow: 0 8px 25px rgba(42,127,110,0.4); }
-    .btn-outline { background: transparent; border: 2px solid #c2813a; color: #c2813a; padding: 8px 22px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
-    .btn-outline:hover { background: #c2813a; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(194,129,58,0.3); }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-primary); }
+    .btn-primary { background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); border: none; color: #fff; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; box-shadow: var(--shadow-blue); font-family: 'Inter', sans-serif; }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(74,144,217,0.4); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); box-shadow: var(--shadow-gold); }
+    .btn-gold:hover { box-shadow: 0 8px 25px rgba(194,129,58,0.4); }
+    .btn-donate { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); box-shadow: var(--shadow-gold); }
+    .btn-donate:hover { box-shadow: 0 8px 25px rgba(194,129,58,0.4); }
+    .btn-outline { background: transparent; border: 2px solid var(--blue-primary); color: var(--blue-primary); padding: 8px 22px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .btn-outline:hover { background: var(--blue-primary); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-blue); }
     .btn-whatsapp { background: #25D366; border: none; color: #fff; padding: 8px 22px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
-    .btn-whatsapp:hover { background: #1da85c; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+    .btn-whatsapp:hover { background: #1da85c; transform: translateY(-2px); }
 
-    /* ── Ticker ── */
-    .ticker-wrap { background: linear-gradient(90deg, #1e2a2a, #2a3a3a); color: #f0e6dc; padding: 8px 0; overflow: hidden; position: relative; border-top: 2px solid #c2813a; border-bottom: 2px solid #c2813a; }
+    /* ── TICKER ── */
+    .ticker-wrap { background: linear-gradient(90deg, var(--blue-dark), #1a3a5a); color: #f0e6dc; padding: 8px 0; overflow: hidden; position: relative; border-top: 2px solid var(--gold-primary); border-bottom: 2px solid var(--gold-primary); }
     .ticker-content { display: flex; white-space: nowrap; animation: tickerScroll 35s linear infinite; }
     .ticker-item { padding: 0 50px; font-size: 0.9rem; font-weight: 400; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
-    .ticker-item strong { color: #f5d6a8; }
+    .ticker-item strong { color: var(--gold-light); }
+    .ticker-item .highlight { color: var(--gold-primary); }
 
-    /* ── Hero ── */
-    .hero { background: linear-gradient(135deg, #faf1e6 0%, #f5e8db 50%, #f0e0d0 100%); padding: 70px 0 80px; position: relative; overflow: hidden; }
+    /* ── HERO ── */
+    .hero { background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue-medium) 50%, var(--blue-light) 100%); padding: 70px 0 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 70%; height: 150%; background: radial-gradient(circle, rgba(194,129,58,0.08) 0%, transparent 70%); pointer-events: none; }
     .hero::after { content: '✦'; position: absolute; bottom: 20px; right: 40px; font-size: 12rem; color: rgba(194,129,58,0.05); pointer-events: none; }
     .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; position: relative; z-index: 2; }
     .hero-content { flex: 1.2; }
-    .hero-title { font-size: 3.8rem; font-weight: 800; color: #6b3f1c; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
-    .hero-title span { color: #c2813a; }
-    .hero-subtitle { font-size: 1.4rem; font-weight: 500; color: #9b6a3a; margin-bottom: 16px; letter-spacing: 3px; font-family: 'Inter', sans-serif; text-transform: uppercase; }
-    .hero-tagline { font-size: 1.6rem; font-style: italic; font-family: 'Playfair Display', serif; color: #b8864b; margin-bottom: 20px; border-left: 4px solid #c2813a; padding-left: 24px; font-weight: 500; }
+    .hero-title { font-size: 3.8rem; font-weight: 800; color: var(--blue-dark); line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
+    .hero-title span { color: var(--gold-primary); }
+    .hero-subtitle { font-size: 1.4rem; font-weight: 500; color: var(--blue-primary); margin-bottom: 16px; letter-spacing: 3px; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+    .hero-tagline { font-size: 1.6rem; font-style: italic; font-family: 'Playfair Display', serif; color: var(--gold-primary); margin-bottom: 20px; border-left: 4px solid var(--gold-primary); padding-left: 24px; font-weight: 500; }
     .hero-desc { font-size: 1.05rem; color: #4a5c55; max-width: 520px; margin-bottom: 30px; line-height: 1.8; font-family: 'Inter', sans-serif; }
     .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-    .hero-location-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: #6b4c2c; border: 1px solid rgba(194,129,58,0.2); font-family: 'Inter', sans-serif; }
+    .hero-location-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.7); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: var(--blue-dark); border: 1px solid rgba(74,144,217,0.2); font-family: 'Inter', sans-serif; }
+    .live-indicator { display: inline-flex; align-items: center; gap: 8px; background: #ff4444; color: #fff; padding: 6px 18px; border-radius: 60px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; animation: pulse 1.5s infinite; }
     .hero-image { flex: 0.9; text-align: center; }
     .hero-image img { max-width: 100%; border-radius: 32px; box-shadow: 0 30px 50px -20px rgba(0,0,0,0.25); border: 6px solid #fff; object-fit: cover; max-height: 420px; animation: float 6s ease-in-out infinite; }
 
-    /* ── Sections ── */
-    section { padding: 70px 0; border-bottom: 1px solid #efe2d4; }
-    .section-title { font-size: 2.8rem; font-weight: 700; color: #5e3a1f; margin-bottom: 16px; position: relative; display: inline-block; letter-spacing: -0.5px; }
-    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 4px; background: linear-gradient(90deg, #c2813a, #f5d6a8); border-radius: 4px; }
-    .section-title span { color: #c2813a; }
-    .section-sub { color: #8b765c; max-width: 680px; margin-bottom: 48px; font-size: 1.1rem; line-height: 1.7; font-family: 'Inter', sans-serif; }
+    /* ── FOUNDER SECTION ── */
+    .founder-section { background: linear-gradient(135deg, var(--blue-light), var(--blue-medium)); border-radius: 40px; padding: 40px; margin-top: 20px; border: 2px solid var(--gold-primary); }
+    .founder-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+    .founder-image { flex: 0.8; position: relative; }
+    .founder-image img { width: 100%; border-radius: 28px; border: 4px solid var(--gold-primary); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2); }
+    .founder-image .badge { position: absolute; bottom: -10px; right: -10px; background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: #fff; padding: 8px 20px; border-radius: 40px; font-weight: 700; font-size: 0.8rem; font-family: 'Inter', sans-serif; box-shadow: var(--shadow-gold); }
+    .founder-info { flex: 1.2; }
+    .founder-info h2 { font-size: 2.5rem; font-weight: 800; color: var(--blue-dark); font-family: 'Playfair Display', serif; margin-bottom: 4px; }
+    .founder-info .title { color: var(--gold-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-family: 'Inter', sans-serif; margin-bottom: 16px; }
+    .founder-info .quote { font-style: italic; border-left: 4px solid var(--gold-primary); padding-left: 20px; margin: 16px 0; color: #5a4a38; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; }
+    .founder-stats { display: flex; flex-wrap: wrap; gap: 24px; margin: 20px 0; }
+    .founder-stats .stat { text-align: center; }
+    .founder-stats .stat .number { font-size: 2rem; font-weight: 800; color: var(--gold-primary); font-family: 'Playfair Display', serif; }
+    .founder-stats .stat .label { font-size: 0.8rem; color: var(--blue-primary); font-family: 'Inter', sans-serif; }
 
-    /* ── Cards ── */
+    /* ── MINISTRY CARDS ── */
     .cards-grid { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 16px; }
-    .ministry-card { background: #fff; border-radius: 28px; padding: 32px 28px; flex: 1 1 260px; transition: 0.4s; border: 1px solid #eedfcb; box-shadow: 0 6px 20px -10px rgba(0,0,0,0.06); }
-    .ministry-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12); border-color: #c2813a; }
-    .ministry-card h3 { font-size: 1.8rem; margin-bottom: 14px; color: #c2813a; font-family: 'Playfair Display', serif; }
+    .ministry-card { background: #fff; border-radius: 28px; padding: 32px 28px; flex: 1 1 260px; transition: 0.4s; border: 1px solid var(--blue-light); box-shadow: var(--shadow-sm); }
+    .ministry-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--shadow-md); border-color: var(--gold-primary); }
+    .ministry-card .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .ministry-card h3 { font-size: 1.8rem; margin-bottom: 14px; color: var(--blue-primary); font-family: 'Playfair Display', serif; }
     .ministry-card p { color: #5a6e66; line-height: 1.7; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
-    .small-badge { background: linear-gradient(135deg, #e9dbce, #f5ede3); padding: 4px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+    .small-badge { background: linear-gradient(135deg, var(--gold-light), var(--gold-medium)); padding: 4px 14px; border-radius: 40px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-top: 12px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-dark); }
 
-    /* ── Prophet Card ── */
-    .prophet-card-branded { background: linear-gradient(145deg, #ffffff, #fef7ef); border-radius: 40px; padding: 32px; box-shadow: 0 25px 45px -18px rgba(0,0,0,0.12); border: 1px solid rgba(194,129,58,0.15); transition: 0.4s; margin-top: 24px; }
-    .prophet-card-branded:hover { transform: translateY(-5px); box-shadow: 0 35px 55px -20px rgba(0,0,0,0.18); }
-    .prophet-card-branded .prophet-img { width: 100%; border-radius: 28px; border: 4px solid #c2813a; box-shadow: 0 15px 30px -12px rgba(0,0,0,0.15); }
-    .prophet-card-branded h3 { font-size: 2rem; font-weight: 800; color: #8b5a2b; font-family: 'Playfair Display', serif; }
-    .prophet-card-branded .prophet-title { color: #c2813a; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 12px; font-family: 'Inter', sans-serif; }
-    .prophet-card-branded .prophet-quote { font-style: italic; border-left: 4px solid #c2813a; padding-left: 20px; margin: 16px 0; color: #5a4a38; font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; }
-
-    /* ── Posts ── */
+    /* ── POSTS ── */
     .post-list { display: flex; flex-direction: column; gap: 36px; margin-top: 24px; }
-    .post-item { background: #fff; border-radius: 28px; padding: 32px 36px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); border: 1px solid #ede0d0; transition: 0.3s; }
-    .post-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.07); transform: translateY(-3px); }
-    .post-title { font-size: 1.6rem; font-weight: 700; color: #5e3a1f; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
-    .post-date { font-size: 0.8rem; color: #a07c56; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
-    .post-content { color: #3a4e47; line-height: 1.8; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
+    .post-item { background: #fff; border-radius: 28px; padding: 32px 36px; box-shadow: var(--shadow-sm); border: 1px solid var(--blue-light); transition: 0.3s; position: relative; }
+    .post-item:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--gold-primary); }
+    .post-item .admin-badge { position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #fff; padding: 2px 12px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .post-item .pin-badge { position: absolute; top: 16px; right: 16px; background: #ff4444; color: #fff; padding: 2px 12px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+    .post-title { font-size: 1.6rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+    .post-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--gray); }
+    .post-meta .category { background: var(--blue-light); padding: 2px 12px; border-radius: 20px; color: var(--blue-primary); font-weight: 600; }
+    .post-content { color: var(--text); line-height: 1.8; margin-bottom: 16px; font-family: 'Inter', sans-serif; }
     .post-video { margin: 16px 0; border-radius: 16px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; }
     .post-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .post-media { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+    .post-media .media-item { background: var(--blue-light); padding: 8px 16px; border-radius: 40px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--blue-dark); font-family: 'Inter', sans-serif; text-decoration: none; transition: 0.2s; }
+    .post-media .media-item:hover { background: var(--gold-primary); color: #fff; transform: translateY(-2px); }
 
-    /* ── Reactions ── */
-    .reactions { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; padding: 12px 0; border-top: 2px solid #f0e6dc; border-bottom: 2px solid #f0e6dc; }
-    .reaction-btn { background: #f8f2ea; border: none; padding: 6px 18px; border-radius: 40px; font-size: 1rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; }
-    .reaction-btn:hover { background: #ede0d0; transform: scale(1.05); }
-    .reaction-btn.active { background: #c2813a; color: #fff; }
-    .reaction-count { font-weight: 600; font-size: 0.8rem; }
+    /* ── REACTIONS ── */
+    .reactions { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; padding: 12px 0; border-top: 2px solid var(--blue-light); border-bottom: 2px solid var(--blue-light); }
+    .reaction-btn { background: var(--blue-light); border: none; padding: 6px 16px; border-radius: 40px; font-size: 1rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 4px; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .reaction-btn:active { transform: scale(1.2); }
+    .reaction-btn:hover { background: var(--gold-light); transform: scale(1.05); }
+    .reaction-btn.active { background: var(--gold-primary); color: #fff; }
+    .reaction-count { font-weight: 600; font-size: 0.8rem; min-width: 16px; }
 
-    /* ── Comments ── */
+    /* ── COMMENTS ── */
     .comments-section { margin-top: 18px; }
     .comment-form { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-    .comment-form input { flex: 1; padding: 10px 16px; border-radius: 30px; border: 2px solid #dccdbd; font-family: 'Inter', sans-serif; min-width: 120px; font-size: 0.9rem; transition: 0.3s; }
-    .comment-form input:focus { border-color: #c2813a; outline: none; }
-    .comment-form button { background: linear-gradient(135deg, #c2813a, #a5682e); color: #fff; border: none; padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
-    .comment-form button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(194,129,58,0.3); }
+    .comment-form input { flex: 1; padding: 10px 16px; border-radius: 30px; border: 2px solid var(--blue-light); font-family: 'Inter', sans-serif; min-width: 120px; font-size: 0.9rem; transition: 0.3s; }
+    .comment-form input:focus { border-color: var(--gold-primary); outline: none; box-shadow: 0 0 0 3px rgba(194,129,58,0.1); }
+    .comment-form button { background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; border: none; padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
+    .comment-form button:hover { transform: translateY(-2px); box-shadow: var(--shadow-blue); }
     .comment-list { display: flex; flex-direction: column; gap: 12px; }
-    .comment-item { background: #faf5ef; border-radius: 16px; padding: 14px 18px; border-left: 3px solid #c2813a; }
-    .comment-author { font-weight: 600; color: #5e3a1f; font-size: 0.85rem; font-family: 'Inter', sans-serif; }
-    .comment-text { color: #3a4e47; margin: 4px 0; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
-    .comment-date { font-size: 0.65rem; color: #a07c56; font-family: 'Inter', sans-serif; }
-    .comment-replies { margin-left: 30px; margin-top: 10px; border-left: 2px solid #e0d4c6; padding-left: 16px; }
-    .reply-item { background: #f5ede3; border-radius: 12px; padding: 8px 14px; margin-top: 6px; }
+    .comment-item { background: var(--blue-light); border-radius: 16px; padding: 14px 18px; border-left: 3px solid var(--gold-primary); }
+    .comment-author { font-weight: 600; color: var(--blue-dark); font-size: 0.85rem; font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 8px; }
+    .comment-author .admin-tag { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #fff; padding: 1px 8px; border-radius: 12px; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
+    .comment-text { color: var(--text); margin: 4px 0; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
+    .comment-date { font-size: 0.65rem; color: var(--gray); font-family: 'Inter', sans-serif; }
+    .comment-replies { margin-left: 30px; margin-top: 10px; border-left: 2px solid var(--blue-medium); padding-left: 16px; }
+    .reply-item { background: #f0f8ff; border-radius: 12px; padding: 10px 14px; margin-top: 6px; }
     .reply-form { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-    .reply-form input { flex: 1; padding: 6px 12px; border-radius: 30px; border: 2px solid #dccdbd; font-family: 'Inter', sans-serif; min-width: 100px; font-size: 0.8rem; }
-    .reply-form input:focus { border-color: #c2813a; outline: none; }
-    .reply-form button { background: #8b765c; color: #fff; border: none; padding: 6px 16px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 0.75rem; transition: 0.3s; font-family: 'Inter', sans-serif; }
-    .reply-form button:hover { background: #6b5a44; transform: translateY(-2px); }
+    .reply-form input { flex: 1; padding: 6px 12px; border-radius: 30px; border: 2px solid var(--blue-light); font-family: 'Inter', sans-serif; min-width: 100px; font-size: 0.8rem; }
+    .reply-form input:focus { border-color: var(--gold-primary); outline: none; }
+    .reply-form button { background: var(--gold-primary); color: #fff; border: none; padding: 6px 16px; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 0.75rem; transition: 0.3s; font-family: 'Inter', sans-serif; }
+    .reply-form button:hover { background: var(--gold-dark); transform: translateY(-2px); }
 
-    .loading-spinner { text-align: center; padding: 40px; color: #8b765c; font-family: 'Inter', sans-serif; font-size: 1.1rem; }
+    /* ── EVENTS ── */
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 20px; }
+    .event-card { background: #fff; border-radius: 24px; padding: 24px; border: 1px solid var(--blue-light); transition: 0.3s; }
+    .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold-primary); }
+    .event-card .date { background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; padding: 8px 16px; border-radius: 40px; display: inline-block; font-size: 0.8rem; font-weight: 600; font-family: 'Inter', sans-serif; margin-bottom: 12px; }
+    .event-card h4 { font-size: 1.3rem; color: var(--blue-dark); font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    .event-card p { color: var(--gray); font-size: 0.9rem; font-family: 'Inter', sans-serif; }
 
-    /* ── Footer ── */
-    footer { background: linear-gradient(135deg, #1e2a2a, #2a3a3a); color: #e0cfbe; padding: 40px 0 30px; text-align: center; border-top: 3px solid #c2813a; }
-    footer .footer-logo { font-size: 1.5rem; font-weight: 700; color: #f5d6a8; font-family: 'Playfair Display', serif; margin-bottom: 8px; }
-    footer .footer-logo span { color: #c2813a; }
+    /* ── TESTIMONIALS ── */
+    .testimonials-slider { overflow: hidden; position: relative; margin-top: 20px; }
+    .testimonials-track { display: flex; transition: 0.5s ease; }
+    .testimonial-card { min-width: 100%; padding: 20px; text-align: center; }
+    .testimonial-card .stars { color: var(--gold-primary); font-size: 1.5rem; margin-bottom: 12px; }
+    .testimonial-card blockquote { font-size: 1.2rem; font-style: italic; color: var(--text); font-family: 'Cormorant Garamond', serif; max-width: 700px; margin: 0 auto; }
+    .testimonial-card .author { margin-top: 16px; font-weight: 600; color: var(--blue-dark); font-family: 'Inter', sans-serif; }
+
+    /* ── SECTIONS ── */
+    section { padding: 70px 0; border-bottom: 1px solid var(--blue-light); }
+    .section-title { font-size: 2.8rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px; position: relative; display: inline-block; letter-spacing: -0.5px; font-family: 'Playfair Display', serif; }
+    .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 70px; height: 4px; background: linear-gradient(90deg, var(--gold-primary), var(--gold-light)); border-radius: 4px; }
+    .section-title span { color: var(--gold-primary); }
+    .section-sub { color: var(--gray); max-width: 680px; margin-bottom: 48px; font-size: 1.1rem; line-height: 1.7; font-family: 'Inter', sans-serif; }
+
+    /* ── LOADING ── */
+    .loading-spinner { text-align: center; padding: 40px; color: var(--gray); font-family: 'Inter', sans-serif; font-size: 1.1rem; }
+
+    /* ── FLOATING ADMIN BAR ── */
+    .floating-admin-bar { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: none; flex-direction: column; gap: 10px; }
+    .floating-admin-bar.show { display: flex; }
+    .floating-admin-bar .fab-btn { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; border: none; box-shadow: var(--shadow-blue); cursor: pointer; transition: 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+    .floating-admin-bar .fab-btn:hover { transform: scale(1.1) translateY(-2px); }
+    .floating-admin-bar .fab-btn.gold { background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); box-shadow: var(--shadow-gold); }
+    .floating-admin-bar .fab-btn.danger { background: #b33c3c; box-shadow: 0 8px 25px rgba(179,60,60,0.4); }
+
+    /* ── USER MENU ── */
+    .user-menu { position: relative; }
+    .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: 0.3s; border: 2px solid var(--gold-primary); }
+    .user-avatar:hover { transform: scale(1.05); }
+    .user-dropdown { display: none; position: absolute; top: 45px; right: 0; background: #fff; border-radius: 16px; box-shadow: var(--shadow-lg); border: 1px solid var(--blue-light); padding: 12px 0; min-width: 200px; z-index: 100; }
+    .user-dropdown.show { display: block; }
+    .user-dropdown a { display: block; padding: 8px 20px; color: var(--text); text-decoration: none; font-size: 0.85rem; transition: 0.2s; font-family: 'Inter', sans-serif; }
+    .user-dropdown a:hover { background: var(--blue-light); color: var(--gold-primary); }
+    .user-dropdown .divider { height: 1px; background: var(--blue-light); margin: 6px 16px; }
+    .user-dropdown .logout { color: #b33c3c; }
+
+    /* ── FOOTER ── */
+    footer { background: linear-gradient(135deg, var(--blue-dark), #1a3a5a); color: #e0cfbe; padding: 40px 0 30px; text-align: center; border-top: 3px solid var(--gold-primary); }
+    footer .footer-logo { font-size: 1.5rem; font-weight: 700; color: var(--gold-light); font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    footer .footer-logo span { color: var(--gold-primary); }
     footer .footer-social { display: flex; justify-content: center; gap: 24px; margin: 16px 0; }
     footer .footer-social a { color: #e0cfbe; text-decoration: none; font-size: 0.9rem; transition: 0.3s; font-family: 'Inter', sans-serif; }
-    footer .footer-social a:hover { color: #f5d6a8; transform: translateY(-2px); }
+    footer .footer-social a:hover { color: var(--gold-light); transform: translateY(-2px); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero-title { font-size: 2.6rem; }
-      .hero-tagline { font-size: 1.2rem; }
-      .section-title { font-size: 2.2rem; }
       .container { padding: 0 16px; }
       .nav-container { flex-direction: column; }
       .nav-links { justify-content: center; gap: 14px; }
+      .hero-title { font-size: 2.6rem; }
+      .hero-tagline { font-size: 1.2rem; }
       .hero-grid { flex-direction: column; text-align: center; }
       .hero-content { text-align: center; }
-      .hero-tagline { border-left: none; padding-left: 0; border-top: 3px solid #c2813a; padding-top: 14px; }
+      .hero-tagline { border-left: none; padding-left: 0; border-top: 3px solid var(--gold-primary); padding-top: 14px; }
       .hero-actions { justify-content: center; }
+      .section-title { font-size: 2.2rem; display: block; text-align: center; }
       .section-title::after { left: 50%; transform: translateX(-50%); }
-      .section-title { display: block; text-align: center; }
       .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
       .logo-img { height: 48px; width: 48px; }
       .post-item { padding: 20px; }
+      .comment-form { flex-direction: column; }
+      .founder-grid { flex-direction: column; text-align: center; }
+      .founder-info .quote { border-left: none; padding-left: 0; border-top: 3px solid var(--gold-primary); padding-top: 14px; }
+      .founder-stats { justify-content: center; }
+      .floating-admin-bar .fab-btn { width: 48px; height: 48px; font-size: 1rem; }
     }
-  </style>
+    @media (max-width: 500px) {
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .founder-section { padding: 20px; }
+    }
+    
+    </style>
 </head>
 <body>
-  <header class="navbar">
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
     <div class="container nav-container">
       <div class="logo-area">
         <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" onerror="this.src='https://placehold.co/80x80?text=PFFM'" />
@@ -189,12 +287,15 @@
         <li><a href="live.html">📺 Live</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="donation.html" class="btn-primary btn-donate">💖 Donate</a></li>
-        <li><a href="admin.html" class="btn-outline">🔐 Admin</a></li>
+        <li id="authLinks">
+          <a href="login.html" class="btn-outline">🔐 Login</a>
+        </li>
         <li><a href="services.html" class="btn-primary">Plan Visit</a></li>
       </ul>
     </div>
   </header>
 
+  <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-content" id="tickerContent">
       <span class="ticker-item">🔥 <strong>Prophetic Flames of Fire Ministries</strong> — Healing Nations Church</span>
@@ -207,7 +308,8 @@
     </div>
   </div>
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" id="home">
     <div class="container hero-grid">
       <div class="hero-content">
         <h1 class="hero-title animate-left">PROPHETIC <span>FLAMES</span><br />OF FIRE</h1>
@@ -219,81 +321,134 @@
           <a href="contact.html" class="btn-outline">Prayer Line</a>
           <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank" class="btn-whatsapp">📱 WhatsApp Channel</a>
         </div>
-        <div class="hero-location-badge animate-left fade-up-delay-5">📍 MUNGWI & KASAMA | Northern Province, Zambia | Sundays 9:00 AM</div>
+        <div class="hero-location-badge animate-left fade-up-delay-5">
+          📍 MUNGWI & KASAMA | Northern Province, Zambia | Sundays 9:00 AM
+          <span class="live-indicator" style="margin-left:12px; background:#ff4444; color:#fff; padding:4px 12px; border-radius:40px; font-size:0.7rem;">🔴 LIVE</span>
+        </div>
       </div>
       <div class="hero-image animate-right">
         <img src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" onerror="this.src='https://placehold.co/500x400'" />
       </div>
     </div>
   </section>
-  
+
+  <!-- FOUNDER SECTION -->
   <section>
     <div class="container">
       <h2 class="section-title animate-up">The <span>Prophet</span> & Founder</h2>
-      <div class="prophet-card-branded animate-scale">
-        <div style="display: flex; flex-wrap: wrap; gap: 36px; align-items: center;">
-          <div style="flex: 0.8;">
-            <img class="prophet-img" src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" />
+      <div class="founder-section animate-scale">
+        <div class="founder-grid">
+          <div class="founder-image">
+            <img src="https://i.ibb.co/YFHVfCHY/IMG-20260614-WA0031.jpg" alt="Prophet CK Innocent" />
+            <div class="badge">🔥 APOSTLE OF HEALING</div>
           </div>
-          <div style="flex: 1.2;">
-            <h3>Prophet CK Innocent</h3>
-            <div class="prophet-title">✦ Apostle of Healing & Deliverance ✦</div>
+          <div class="founder-info">
+            <h2>Prophet CK Innocent</h2>
+            <div class="title">✦ Apostle of Healing & Deliverance ✦</div>
             <p><strong>Called at childhood to minister healing, deliverance, and prophesy to the nations of the world.</strong> He is the Founder and President of <strong>PROPHETIC FLAMES OF FIRE MINISTRIES A.K.A HEALING NATIONS CHURCH</strong> located in Mungwi, Northern Province of Zambia.</p>
-            <div class="prophet-quote">"The fire of the prophetic has been burning in me since my youth. I carry a mandate to see broken hearts restored, nations awakened, and the glory of God manifested through signs and wonders."</div>
+            <div class="quote">"The fire of the prophetic has been burning in me since my youth. I carry a mandate to see broken hearts restored, nations awakened, and the glory of God manifested through signs and wonders."</div>
             <p>With a proven track record of supernatural miracles, prophetic accuracy, and deliverance, Prophet CK Innocent travels across Zambia and beyond, equipping believers to walk in the supernatural.</p>
-            <div class="small-badge" style="margin-top: 14px;">🔥 Prophetic Flames of Fire Ministries 🔥</div>
+            <div class="founder-stats">
+              <div class="stat"><div class="number">20+</div><div class="label">Years in Ministry</div></div>
+              <div class="stat"><div class="number">15+</div><div class="label">Nations Reached</div></div>
+              <div class="stat"><div class="number">10K+</div><div class="label">Lives Transformed</div></div>
+              <div class="stat"><div class="number">1000+</div><div class="label">Healings Reported</div></div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+              <a href="https://wa.me/260776160997" class="btn-whatsapp">📱 WhatsApp</a>
+              <a href="mailto:Kprophetinnocent@gmail.com" class="btn-outline">✉️ Email</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-    <section>
+  <!-- MINISTRIES -->
+  <section>
     <div class="container">
       <h2 class="section-title animate-up">Powerful <span>Ministries</span></h2>
       <p class="section-sub animate-up">Experience healing, prophecy, and community transformation.</p>
       <div class="cards-grid">
-        <div class="ministry-card animate-scale"><h3>🕊️ Healing Services</h3><p>Wednesday 2PM — Miracles, deliverance, and prayer for the sick. God's healing power flows.</p></div>
-        <div class="ministry-card animate-scale"><h3>🔥 Prophetic Service</h3><p>Friday 2PM — Prophetic direction, impartation, and worship. The voice of God for your life.</p><div class="small-badge">🔥 Live Prophecy</div></div>
-        <div class="ministry-card animate-scale"><h3>🌱 Youth Arise</h3><p>Equipping the next generation with prophetic fire and leadership training.</p></div>
-        <div class="ministry-card animate-scale"><h3>🤝 Outreach Missions</h3><p>Feeding programs, medical camps, and evangelism across Northern Province.</p></div>
+        <div class="ministry-card animate-scale"><div class="icon">🕊️</div><h3>Healing Services</h3><p>Wednesday 2PM — Miracles, deliverance, and prayer for the sick. God's healing power flows.</p></div>
+        <div class="ministry-card animate-scale"><div class="icon">🔥</div><h3>Prophetic Service</h3><p>Friday 2PM — Prophetic direction, impartation, and worship. The voice of God for your life.</p><div class="small-badge">🔥 Live Prophecy</div></div>
+        <div class="ministry-card animate-scale"><div class="icon">🌱</div><h3>Youth Arise</h3><p>Equipping the next generation with prophetic fire and leadership training.</p></div>
+        <div class="ministry-card animate-scale"><div class="icon">🤝</div><h3>Outreach Missions</h3><p>Feeding programs, medical camps, and evangelism across Northern Province.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- POSTS -->
   <section id="updates">
     <div class="container">
       <h2 class="section-title animate-up">Ministry <span>Updates</span></h2>
-      <p class="section-sub animate-up">Stay connected with the latest news, prophetic words, and announcements from Prophet CK Innocent.</p>
+      <p class="section-sub animate-up">Stay connected with the latest news, prophetic words, and announcements.</p>
       <div id="postContainer" class="post-list">
         <div class="loading-spinner">Loading updates...</div>
       </div>
     </div>
   </section>
 
+  <!-- EVENTS -->
+  <section style="background: var(--blue-light);">
+    <div class="container">
+      <h2 class="section-title animate-up">Upcoming <span>Events</span></h2>
+      <p class="section-sub animate-up">Join us for these powerful gatherings and encounters.</p>
+      <div class="events-grid" id="eventsContainer">
+        <div class="event-card"><div class="date">📅 This Sunday 9:00 AM</div><h4>⛪ Sunday Morning Service</h4><p>Prophetic worship, word, and Holy Communion. Come expecting a touch from heaven.</p></div>
+        <div class="event-card"><div class="date">📅 Wednesday 2:00 PM</div><h4>🕊️ Healing & Deliverance Service</h4><p>Prayer for the sick, deliverance, and testimonies of God's restoring power.</p></div>
+        <div class="event-card"><div class="date">📅 Friday 2:00 PM</div><h4>📯 Friday Prophetic Service</h4><p>Prophetic direction, worship, and impartation. The voice of God for your life.</p></div>
+        <div class="event-card"><div class="date">📅 Coming June 2026</div><h4>🌍 Global Prophetic Conference</h4><p>International gathering with Prophet CK Innocent. Register now!</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="container">
+      <h2 class="section-title animate-up">Healing <span>Testimonies</span></h2>
+      <p class="section-sub animate-up">Real stories of transformation and divine intervention.</p>
+      <div class="testimonials-slider" id="testimonialSlider">
+        <div class="testimonials-track" id="testimonialTrack">
+          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"I was healed from a chronic condition after Prophet CK Innocent prayed for me. God is truly alive!"</blockquote><div class="author">— Sarah M., Lusaka</div></div>
+          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"My family received restoration and breakthrough. The prophetic word came to pass exactly as spoken."</blockquote><div class="author">— John B., Mungwi</div></div>
+          <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"I was delivered from depression and anxiety. The healing service changed my life completely."</blockquote><div class="author">— Grace K., Kasama</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-logo">🔥 PROPHETIC <span>FLAMES</span> OF FIRE</div>
       <p style="font-size:0.9rem; margin-bottom:4px;">Healing Nations Church</p>
       <p style="margin: 10px 0; font-family: 'Inter', sans-serif; font-size:0.85rem;">Mungwi & Kasama, Northern Province, Zambia | Sunday 9:00 AM | Wednesday 2PM | Friday 2PM Prophetic</p>
-      <p style="font-family: 'Inter', sans-serif; font-size:0.85rem;">📞 Prayer Line: 0570026004 | ✉️ Kprophetinnocent@gmail.com</p>
+      <p style="font-family: 'Inter', sans-serif; font-size:0.85rem;">📞 Prayer Line: 0570026004 | ✉️ Kprophetinnocent@gmail.com | 💖 Donations: +260 776 160997</p>
       <div class="footer-social">
-        <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank">📱 WhatsApp Channel</a>
-        <a href="live.html">📺 Live Stream</a>
-        <a href="donation.html">💖 Donate</a>
-        <a href="contact.html">📞 Contact</a>
+        <a href="https://whatsapp.com/channel/0029Vb8j6sw6GcGCDPs2z01G" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="live.html"><i class="fas fa-video"></i> Live Stream</a>
+        <a href="donation.html"><i class="fas fa-heart"></i> Donate</a>
+        <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
       </div>
       <p style="margin-top: 16px; font-size:0.7rem; opacity:0.6;">© 2026 • Equipping people through the prophetic voice</p>
     </div>
   </footer>
+  
+  <!-- FLOATING ADMIN BAR -->
+  <div class="floating-admin-bar" id="floatingAdminBar">
+    <button class="fab-btn" onclick="window.location.href='admin.html'" title="Admin Dashboard"><i class="fas fa-cog"></i></button>
+    <button class="fab-btn gold" onclick="window.location.href='live.html'" title="Live Stream"><i class="fas fa-video"></i></button>
+    <button class="fab-btn danger" id="quickPostBtn" title="Quick Post"><i class="fas fa-plus"></i></button>
+  </div>
 
+  <!-- FIREBASE IMPORT MAP -->
   <script type="importmap">
     {
       "imports": {
         "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
         "firebase/analytics": "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js",
         "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js",
-        "firebase/storage": "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js",
         "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
       }
     }
@@ -303,10 +458,10 @@
     import { initializeApp } from "firebase/app";
     import { getAnalytics } from "firebase/analytics";
     import { 
-      getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, 
-      onSnapshot, query, orderBy, serverTimestamp, increment, arrayUnion, getDoc 
+      getFirestore, collection, doc, onSnapshot, query, orderBy, 
+      getDoc, increment, arrayUnion, updateDoc 
     } from "firebase/firestore";
-    import { getAuth, onAuthStateChanged } from "firebase/auth";
+    import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g",
@@ -323,77 +478,112 @@
     const db = getFirestore(app);
     const auth = getAuth(app);
 
-    // ── Track user for auth state ──
     let currentUser = null;
+
+    // ── AUTH STATE ──
     onAuthStateChanged(auth, (user) => {
       currentUser = user;
+      const authLinks = document.getElementById('authLinks');
+      const floatingBar = document.getElementById('floatingAdminBar');
+      
+      if (user) {
+        authLinks.innerHTML = `
+          <div class="user-menu" style="position:relative;">
+            <div class="user-avatar" onclick="toggleUserMenu()">
+              ${user.displayName ? user.displayName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+              <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+              <a href="admin.html"><i class="fas fa-cog"></i> Dashboard</a>
+              <a href="live.html"><i class="fas fa-video"></i> Live</a>
+              <a href="prayer-wall.html"><i class="fas fa-pray"></i> Prayer Wall</a>
+              <div class="divider"></div>
+              <a href="#" onclick="logoutUser()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+        `;
+        floatingBar.classList.add('show');
+      } else {
+        authLinks.innerHTML = `<a href="login.html" class="btn-outline">🔐 Login</a>`;
+        floatingBar.classList.remove('show');
+      }
     });
 
+    window.toggleUserMenu = function() {
+      const dropdown = document.getElementById('userDropdown');
+      if (dropdown) dropdown.classList.toggle('show');
+    };
+
+    window.logoutUser = async function() {
+      await signOut(auth);
+      window.location.href = 'index.html';
+    };
+
+    // ── REACTIONS ──
+    async function handleReaction(postId, emoji) {
+      if (!currentUser) {
+        alert('Please sign in to react. Create a free account or login.');
+        return;
+      }
+      try {
+        const postRef = doc(db, 'posts', postId);
+        await updateDoc(postRef, { [`reactions.${emoji}`]: increment(1) });
+      } catch (e) { console.error('Reaction error:', e); }
+    }
+
+    // ── COMMENTS ──
+    async function addComment(postId, name, text) {
+      if (!currentUser) {
+        alert('Please sign in to comment.');
+        return;
+      }
+      try {
+        const postRef = doc(db, 'posts', postId);
+        const comment = {
+          id: Date.now().toString(36) + Math.random().toString(36).substr(2, 4),
+          name: name || currentUser.displayName || currentUser.email || 'Anonymous',
+          text: text,
+          date: new Date().toISOString(),
+          replies: [],
+          isAdmin: currentUser.email === 'admin@login' || currentUser.email === 'Kprophetinnocent@gmail.com'
+        };
+        await updateDoc(postRef, { comments: arrayUnion(comment) });
+      } catch (e) { console.error('Comment error:', e); }
+    }
+
+    async function addReply(postId, commentId, name, text) {
+      if (!currentUser) return;
+      try {
+        const postRef = doc(db, 'posts', postId);
+        const postSnap = await getDoc(postRef);
+        const post = postSnap.data();
+        const comments = post.comments || [];
+        const commentIndex = comments.findIndex(c => c.id === commentId);
+        if (commentIndex === -1) return;
+        const reply = {
+          id: Date.now().toString(36) + Math.random().toString(36).substr(2, 3),
+          name: name || currentUser.displayName || currentUser.email || 'Anonymous',
+          text: text,
+          date: new Date().toISOString(),
+          isAdmin: currentUser.email === 'admin@login' || currentUser.email === 'Kprophetinnocent@gmail.com'
+        };
+        comments[commentIndex].replies.push(reply);
+        await updateDoc(postRef, { comments });
+      } catch (e) { console.error('Reply error:', e); }
+    }
+
+    // ── ESCAPE HTML ──
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
     }
 
-    // ── Reactions ──
-    async function handleReaction(postId, emoji) {
-      if (!currentUser) {
-        alert('Please sign in to react. Use the Admin login or create an account.');
-        return;
-      }
-      const postRef = doc(db, 'posts', postId);
-      await updateDoc(postRef, {
-        [`reactions.${emoji}`]: increment(1)
-      });
-    }
-
-    // ── Comments ──
-    async function addComment(postId, name, text) {
-      if (!currentUser) {
-        alert('Please sign in to comment. Use the Admin login or create an account.');
-        return;
-      }
-      const postRef = doc(db, 'posts', postId);
-      const comment = {
-        id: Date.now().toString(36) + Math.random().toString(36).substr(2, 4),
-        name: name || currentUser.email || 'Anonymous',
-        text: text,
-        date: new Date().toISOString(),
-        replies: []
-      };
-      await updateDoc(postRef, {
-        comments: arrayUnion(comment)
-      });
-    }
-
-    async function addReply(postId, commentId, name, text) {
-      if (!currentUser) {
-        alert('Please sign in to reply.');
-        return;
-      }
-      const postRef = doc(db, 'posts', postId);
-      const postSnap = await getDoc(postRef);
-      const post = postSnap.data();
-      const comments = post.comments || [];
-      const commentIndex = comments.findIndex(c => c.id === commentId);
-      if (commentIndex === -1) return;
-      
-      const reply = {
-        id: Date.now().toString(36) + Math.random().toString(36).substr(2, 3),
-        name: name || currentUser.email || 'Anonymous',
-        text: text,
-        date: new Date().toISOString()
-      };
-      
-      comments[commentIndex].replies.push(reply);
-      await updateDoc(postRef, { comments });
-    }
-
-    // ── Render Posts ──
+    // ── RENDER POSTS ──
     function renderPosts(posts) {
       const container = document.getElementById('postContainer');
       if (!posts || posts.length === 0) {
-        container.innerHTML = `<p style="color:#8b765c; font-style:italic; font-family:'Inter',sans-serif;">No updates yet. Stay tuned for news from the ministry.</p>`;
+        container.innerHTML = `<p style="color:var(--gray); font-style:italic; font-family:'Inter',sans-serif;">No updates yet. Stay tuned for news from the ministry.</p>`;
         return;
       }
 
@@ -402,9 +592,9 @@
       container.innerHTML = sorted.map(post => {
         const data = post.data;
         const reactions = data.reactions || {};
-        const reactionEmojis = ['❤️', '🙏', '🔥', '👍'];
+        const reactionEmojis = ['❤️', '🙏', '🔥', '👍', '😢'];
         const reactionHtml = reactionEmojis.map(emoji => `
-          <button class="reaction-btn" onclick="window.handleReaction('${post.id}', '${emoji}')">
+          <button class="reaction-btn" onmousedown="window.startReactionHold('${post.id}', '${emoji}')" ontouchstart="window.startReactionHold('${post.id}', '${emoji}')" onmouseup="window.clearReactionHold()" ontouchend="window.clearReactionHold()">
             ${emoji} <span class="reaction-count">${reactions[emoji] || 0}</span>
           </button>
         `).join('');
@@ -415,21 +605,40 @@
           </div>
         ` : '';
 
+        const mediaHtml = data.mediaFiles && data.mediaFiles.length > 0 ? `
+          <div class="post-media">
+            ${data.mediaFiles.map(file => `
+              <a href="${file.url}" target="_blank" class="media-item" download>
+                <i class="fas fa-file-${file.type || 'alt'}"></i> ${file.name}
+              </a>
+            `).join('')}
+          </div>
+        ` : '';
+
         const comments = data.comments || [];
         const commentsHtml = comments.map(comment => `
           <div class="comment-item">
-            <div class="comment-author">${escapeHtml(comment.name)}</div>
+            <div class="comment-author">
+              ${escapeHtml(comment.name)}
+              ${comment.isAdmin ? '<span class="admin-tag">Admin</span>' : ''}
+            </div>
             <div class="comment-text">${escapeHtml(comment.text)}</div>
             <div class="comment-date">${new Date(comment.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
+            <div class="comment-actions">
+              <button onclick="document.getElementById('replyForm_${comment.id}').style.display = 'flex'">Reply</button>
+            </div>
             <div class="comment-replies">
               ${(comment.replies || []).map(reply => `
                 <div class="reply-item">
-                  <div class="comment-author">${escapeHtml(reply.name)}</div>
+                  <div class="comment-author">
+                    ${escapeHtml(reply.name)}
+                    ${reply.isAdmin ? '<span class="admin-tag">Admin</span>' : ''}
+                  </div>
                   <div class="comment-text">${escapeHtml(reply.text)}</div>
                   <div class="comment-date">${new Date(reply.date).toLocaleDateString('en-ZM', { hour: '2-digit', minute: '2-digit' })}</div>
                 </div>
               `).join('')}
-              <form class="reply-form" onsubmit="event.preventDefault(); window.addReply('${post.id}', '${comment.id}', document.getElementById('replyName_${comment.id}').value || '', document.getElementById('replyText_${comment.id}').value); document.getElementById('replyText_${comment.id}').value = '';">
+              <form class="reply-form" id="replyForm_${comment.id}" style="display:none;" onsubmit="event.preventDefault(); window.addReply('${post.id}', '${comment.id}', document.getElementById('replyName_${comment.id}').value || '', document.getElementById('replyText_${comment.id}').value); document.getElementById('replyText_${comment.id}').value = ''; document.getElementById('replyForm_${comment.id}').style.display = 'none';">
                 <input type="text" id="replyName_${comment.id}" placeholder="Your name" style="width:100px;">
                 <input type="text" id="replyText_${comment.id}" placeholder="Write a reply..." required>
                 <button type="submit">Reply</button>
@@ -438,12 +647,21 @@
           </div>
         `).join('');
 
+        const isAdmin = currentUser && (currentUser.email === 'admin@login' || currentUser.email === 'Kprophetinnocent@gmail.com');
+
         return `
           <div class="post-item">
+            ${isAdmin ? '<span class="admin-badge">👑 Admin</span>' : ''}
+            ${data.pinned ? '<span class="pin-badge">📌 Pinned</span>' : ''}
             <div class="post-title">${escapeHtml(data.title)}</div>
-            <div class="post-date">📅 ${data.date ? new Date(data.date.toMillis()).toLocaleDateString('en-ZM', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Just now'}</div>
+            <div class="post-meta">
+              <span>📅 ${data.date ? new Date(data.date.toMillis()).toLocaleDateString('en-ZM', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Just now'}</span>
+              ${data.category ? `<span class="category">${escapeHtml(data.category)}</span>` : ''}
+              <span>👁️ ${data.views || 0} views</span>
+            </div>
             <div class="post-content">${escapeHtml(data.content).replace(/\n/g, '<br>')}</div>
             ${videoHtml}
+            ${mediaHtml}
             <div class="reactions">${reactionHtml}</div>
             <div class="comments-section">
               <div class="comment-list">${commentsHtml}</div>
@@ -462,36 +680,97 @@
       window.addReply = addReply;
     }
 
-    // ── Live Updates ──
+    // ── LONG PRESS FOR REACTIONS ──
+    let holdTimeout = null;
+    let holdPostId = null;
+    let holdEmoji = null;
+
+    window.startReactionHold = function(postId, emoji) {
+      holdPostId = postId;
+      holdEmoji = emoji;
+      holdTimeout = setTimeout(() => {
+        if (holdPostId && holdEmoji) {
+          handleReaction(holdPostId, holdEmoji);
+          const btns = document.querySelectorAll(`.reaction-btn`);
+          btns.forEach(btn => {
+            if (btn.textContent.includes(holdEmoji)) {
+              btn.classList.add('active');
+              setTimeout(() => btn.classList.remove('active'), 300);
+            }
+          });
+        }
+        holdPostId = null;
+        holdEmoji = null;
+      }, 500);
+    };
+
+    window.clearReactionHold = function() {
+      clearTimeout(holdTimeout);
+      holdPostId = null;
+      holdEmoji = null;
+    };
+    
+    // ── LIVE POST UPDATES ──
     const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
     onSnapshot(q, (snapshot) => {
       const posts = [];
-      snapshot.forEach((doc) => {
-        posts.push({ id: doc.id, data: doc.data() });
-      });
+      snapshot.forEach((doc) => { posts.push({ id: doc.id, data: doc.data() }); });
       renderPosts(posts);
     }, (error) => {
-      console.error('Error loading posts:', error);
-      document.getElementById('postContainer').innerHTML = `
-        <p style="color:#b33c3c; font-family:'Inter',sans-serif;">Error loading posts. Please refresh.</p>
-      `;
+      document.getElementById('postContainer').innerHTML = `<p style="color:#b33c3c; font-family:'Inter',sans-serif;">Error loading posts. Please refresh.</p>`;
     });
 
-    // ── Ticker ──
+    // ── TICKER ──
     async function loadTicker() {
       try {
         const tickerRef = doc(db, 'settings', 'ticker');
         const snap = await getDoc(tickerRef);
         if (snap.exists()) {
           const items = snap.data().items || [];
-          const container = document.getElementById('tickerContent');
-          container.innerHTML = items.map(item => `<span class="ticker-item">${item}</span>`).join('');
+          document.getElementById('tickerContent').innerHTML = items.map(item => `<span class="ticker-item">${item}</span>`).join('');
         }
-      } catch (e) {
-        console.error('Error loading ticker:', e);
-      }
+      } catch (e) { console.error('Error loading ticker:', e); }
     }
     loadTicker();
+
+    // ── TESTIMONIALS SLIDER ──
+    let currentTestimonial = 0;
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    if (testimonialTrack && testimonialCards.length > 0) {
+      setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        testimonialTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+      }, 5000);
+    }
+
+    // ── QUICK POST ──
+    document.getElementById('quickPostBtn')?.addEventListener('click', () => {
+      if (currentUser) {
+        window.location.href = 'admin.html#quickPost';
+      } else {
+        window.location.href = 'login.html?redirect=admin.html';
+      }
+    });
+
+    // ── NAVBAR SCROLL EFFECT ──
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ── CLOSE DROPDOWN ON OUTSIDE CLICK ──
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('userDropdown');
+      if (dropdown && !e.target.closest('.user-menu')) {
+        dropdown.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>

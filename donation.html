@@ -6,60 +6,164 @@
   <title>Donate | Prophetic Flames of Fire Ministries</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/main.css" />
   <style>
-    .donate-hero { background: linear-gradient(135deg, #faf1e6, #f5e8db); padding: 60px 0; text-align: center; }
-    .donate-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #6b3f1c; }
-    .donate-hero h1 span { color: #c2813a; }
-    .donate-card { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 32px; padding: 48px; text-align: center; border: 1px solid #ede0d0; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.06); }
-    .donate-card .number { font-size: 2.8rem; font-weight: 800; color: #2a7f6e; background: #e0f0ea; display: inline-block; padding: 16px 40px; border-radius: 80px; letter-spacing: 2px; margin: 20px 0; }
-    .donate-card .mobile { font-size: 1.1rem; color: #5a6e66; }
-    .donate-card .btn-copy { background: #2a7f6e; color: #fff; border: none; padding: 12px 32px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-    .donate-card .btn-copy:hover { background: #1e6254; transform: translateY(-2px); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue-primary: #4A90D9;
+      --blue-light: #E8F4FD;
+      --blue-medium: #B8D4E3;
+      --blue-dark: #2C5F8A;
+      --gold-primary: #C2813A;
+      --gold-light: #F5D6A8;
+      --cream: #FEFAF5;
+      --text: #2C3E50;
+      --gray: #8B765C;
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-blue: 0 4px 20px rgba(74,144,217,0.3);
+      --shadow-gold: 0 4px 20px rgba(194,129,58,0.3);
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    @keyframes fadeInUp { 0% { opacity:0; transform:translateY(40px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes rotateLogo { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+    @keyframes scaleIn { 0% { opacity:0; transform:scale(0.9); } 100% { opacity:1; transform:scale(1); } }
+    .animate-up { animation: fadeInUp 0.7s ease forwards; }
+    .animate-scale { animation: scaleIn 0.6s ease forwards; }
+    .fade-up-delay-1 { animation-delay: 0.1s; opacity:0; }
+
+    .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--blue-light); padding: 10px 0; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .logo-img { height: 48px; width: 48px; border-radius: 50%; object-fit: cover; padding: 4px; background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); animation: rotateLogo 20s linear infinite; border: 3px solid var(--gold-primary); }
+    .logo-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--blue-dark); line-height: 1.2; font-family: 'Playfair Display', serif; }
+    .logo-text h3 span { color: var(--gold-primary); }
+    .logo-text p { font-size: 0.6rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: var(--text); transition: 0.3s; font-size: 0.9rem; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold-primary); transition: width 0.3s; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-primary); }
+    .btn-primary { background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark)); border: none; color: #fff; padding: 8px 22px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; box-shadow: var(--shadow-blue); }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); }
+    .btn-donate { background: linear-gradient(135deg, var(--gold-primary), #A0682E); box-shadow: var(--shadow-gold); }
+    .btn-outline { background: transparent; border: 2px solid var(--blue-primary); color: var(--blue-primary); padding: 6px 18px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.85rem; }
+    .btn-outline:hover { background: var(--blue-primary); color: #fff; transform: translateY(-2px); }
+
+    .donate-hero { background: linear-gradient(135deg, var(--blue-light), var(--blue-medium)); padding: 60px 0; text-align: center; }
+    .donate-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--blue-dark); }
+    .donate-hero h1 span { color: var(--gold-primary); }
+    .donate-hero p { color: var(--gray); font-size: 1.1rem; margin-top: 12px; }
+
+    .donate-card { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 32px; padding: 48px; text-align: center; border: 2px solid var(--gold-primary); box-shadow: var(--shadow-md); }
+    .donate-card .number { font-size: 2.8rem; font-weight: 800; color: var(--gold-primary); background: var(--blue-light); display: inline-block; padding: 16px 40px; border-radius: 80px; letter-spacing: 2px; margin: 20px 0; }
+    .donate-card .mobile { font-size: 1.1rem; color: var(--gray); }
+    .donate-card .btn-copy { background: var(--gold-primary); color: #fff; border: none; padding: 12px 32px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 1rem; box-shadow: var(--shadow-gold); }
+    .donate-card .btn-copy:hover { background: #A0682E; transform: translateY(-2px); }
+
     .donate-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
-    .donate-options .option { background: #f8f2ea; border-radius: 16px; padding: 20px; text-align: center; transition: 0.3s; }
-    .donate-options .option:hover { transform: translateY(-4px); background: #ede0d0; }
+    .donate-options .option { background: var(--blue-light); border-radius: 16px; padding: 20px; text-align: center; transition: 0.3s; border: 1px solid transparent; }
+    .donate-options .option:hover { transform: translateY(-4px); border-color: var(--gold-primary); background: #fff; }
     .donate-options .option .icon { font-size: 2rem; }
-    .donate-options .option h4 { color: #5e3a1f; margin-top: 8px; }
+    .donate-options .option h4 { color: var(--blue-dark); margin-top: 8px; font-family: 'Playfair Display', serif; }
+    .donate-options .option p { font-size: 0.85rem; color: var(--gray); }
+
+    footer { background: linear-gradient(135deg, var(--blue-dark), #1a3a5a); color: #e0cfbe; padding: 28px 0; text-align: center; border-top: 3px solid var(--gold-primary); }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 16px; }
+      .nav-container { flex-direction: column; }
+      .nav-links { justify-content: center; gap: 14px; }
+      .donate-hero h1 { font-size: 2.2rem; }
+      .donate-card { padding: 32px 20px; }
+      .donate-card .number { font-size: 2rem; padding: 12px 24px; }
+    }
   </style>
 </head>
 <body>
-  <header class="navbar"><div class="container nav-container"><div class="logo-area"><img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" /><div class="logo-text"><h3>PROPHETIC <span>FLAMES</span><br />OF FIRE</h3><p>Healing Nations Church</p></div></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ministries.html">Ministries</a></li><li><a href="services.html">Services</a></li><li><a href="live.html">📺 Live</a></li><li><a href="contact.html">Contact</a></li><li><a href="donation.html" class="btn-primary btn-donate">💖 Donate</a></li><li id="authLinks"><a href="login.html" class="btn-outline">🔐 Login</a></li><li><a href="services.html" class="btn-primary">Plan Visit</a></li></ul></div></header>
-
-  <section class="donate-hero"><div class="container"><h1>Support The <span>Vision</span></h1><p style="color:#8b765c; font-size:1.1rem; margin-top:12px;">Your generosity fuels healing, prophetic ministry, and outreach across Zambia.</p></div></section>
-
-  <section><div class="container">
-    <div class="donate-card">
-      <div style="font-size:1.2rem; color:#5e3a1f;">💖 Give Online</div>
-      <div class="number">+260 776 160997</div>
-      <div class="mobile">📱 Airtel Money · MTN Mobile Money · Zamtel</div>
-      <p style="margin:16px 0;"><strong>Prophet CK Innocent Ministries</strong><br />Prophetic Flames of Fire Ministries</p>
-      <button class="btn-copy" onclick="copyNumber()">📋 Copy Number</button>
-      <p style="margin-top:24px; font-size:0.9rem; color:#8b765c;">"Give, and it will be given to you... God loves a cheerful giver." — Luke 6:38</p>
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo-area">
+        <img class="logo-img" src="https://i.ibb.co/8nQ0GZVZ/IMG-20260614-WA0030.jpg" alt="Logo" />
+        <div class="logo-text"><h3>PROPHETIC <span>FLAMES</span><br />OF FIRE</h3><p>Healing Nations Church</p></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ministries.html">Ministries</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="live.html">📺 Live</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donation.html" class="btn-primary btn-donate active">💖 Donate</a></li>
+        <li id="authLinks"><a href="login.html" class="btn-outline">🔐 Login</a></li>
+        <li><a href="services.html" class="btn-primary">Plan Visit</a></li>
+      </ul>
     </div>
+  </header>
 
-    <div class="donate-options">
-      <div class="option"><div class="icon">💸</div><h4>Offering</h4><p style="font-size:0.85rem; color:#8b765c;">Support the ministry</p></div>
-      <div class="option"><div class="icon">🌍</div><h4>Missions</h4><p style="font-size:0.85rem; color:#8b765c;">Outreach programs</p></div>
-      <div class="option"><div class="icon">🏛️</div><h4>Church Building</h4><p style="font-size:0.85rem; color:#8b765c;">Kingdom infrastructure</p></div>
-      <div class="option"><div class="icon">📺</div><h4>Media & Broadcasting</h4><p style="font-size:0.85rem; color:#8b765c;">Reach the nations</p></div>
+  <section class="donate-hero">
+    <div class="container">
+      <h1>Support The <span>Vision</span></h1>
+      <p>Your generosity fuels healing, prophetic ministry, and outreach across Zambia.</p>
     </div>
-  </div></section>
+  </section>
 
-  <footer style="background:linear-gradient(135deg,#1e2a2a,#2a3a3a); color:#e0cfbe; padding:28px 0; text-align:center; margin-top:20px; border-top:3px solid #c2813a;"><div class="container"><p style="font-weight:600;">🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p><p style="margin:8px 0; font-size:0.85rem;">📞 Prayer Line: 0570026004 | 💖 Donations: +260 776 160997</p><p style="font-size:0.75rem; opacity:0.7;">© 2026 • Equipping people through the prophetic voice</p></div></footer>
+  <section>
+    <div class="container">
+      <div class="donate-card animate-scale">
+        <div style="font-size:1.2rem; color:var(--blue-dark);">💖 Give Online</div>
+        <div class="number">+260 776 160997</div>
+        <div class="mobile">📱 Airtel Money</div>
+        <p style="margin:16px 0;"><strong>Prophet CK Innocent Ministries</strong><br />Prophetic Flames of Fire Ministries</p>
+        <button class="btn-copy" onclick="copyNumber()">📋 Copy Number</button>
+        <p style="margin-top:24px; font-size:0.9rem; color:var(--gray);">"Give, and it will be given to you... God loves a cheerful giver." — Luke 6:38</p>
+      </div>
+
+      <div class="donate-options animate-up">
+        <div class="option"><div class="icon">💸</div><h4>Offering</h4><p>Support the ministry</p></div>
+        <div class="option"><div class="icon">🌍</div><h4>Missions</h4><p>Outreach programs</p></div>
+        <div class="option"><div class="icon">🏛️</div><h4>Church Building</h4><p>Kingdom infrastructure</p></div>
+        <div class="option"><div class="icon">📺</div><h4>Media & Broadcasting</h4><p>Reach the nations</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="font-weight:600;">🔥 PROPHETIC FLAMES OF FIRE MINISTRIES | HEALING NATIONS CHURCH 🔥</p>
+      <p style="margin:8px 0; font-size:0.85rem;">📞 Prayer Line: 0570026004 | 💖 Donations: +260 776 160997</p>
+      <p style="font-size:0.75rem; opacity:0.7;">© 2026 • Equipping people through the prophetic voice</p>
+    </div>
+  </footer>
 
   <script>
     function copyNumber() {
       navigator.clipboard.writeText("+260776160997");
-      alert("Donation number copied: +260 776 160997. God bless you!");
+      alert("✅ Donation number copied: +260 776 160997. God bless you!");
     }
   </script>
 
-  <script type="importmap">{"imports":{"firebase/app":"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js","firebase/analytics":"https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js","firebase/auth":"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"}}</script>
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/analytics": "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
+      }
+    }
+  </script>
   <script type="module">
     import { initializeApp } from "firebase/app";
     import { getAuth, onAuthStateChanged } from "firebase/auth";
-    const firebaseConfig = { apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g", authDomain: "prophetic-flames-fire.firebaseapp.com", projectId: "prophetic-flames-fire", storageBucket: "prophetic-flames-fire.firebasestorage.app", messagingSenderId: "1039526655615", appId: "1:1039526655615:web:c5a68086c00804253d314a", measurementId: "G-7RXNMMSHVP" };
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7Jf8cw4y-gKLF4kQh-Qq9d5s-8w05R4g",
+      authDomain: "prophetic-flames-fire.firebaseapp.com",
+      projectId: "prophetic-flames-fire",
+      storageBucket: "prophetic-flames-fire.firebasestorage.app",
+      messagingSenderId: "1039526655615",
+      appId: "1:1039526655615:web:c5a68086c00804253d314a",
+      measurementId: "G-7RXNMMSHVP"
+    };
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     onAuthStateChanged(auth, (user) => {
